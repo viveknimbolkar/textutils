@@ -85,7 +85,7 @@ export function renderFooter() {
                     <a href="./privacy.html" class="hover:text-primary-600">Privacy</a>
                     <a href="./terms.html" class="hover:text-primary-600">Terms</a>
                     <a href="./contact.html" class="hover:text-primary-600">Contact</a>
-                    <a href="#" aria-label="Github" class="hover:text-slate-900 dark:hover:text-white"><i class="fa-brands fa-github text-xl"></i></a>
+                    <a href="https://github.com/viveknimbolkar/textutils" aria-label="Github" class="hover:text-slate-900 dark:hover:text-white"><i class="fa-brands fa-github text-xl"></i></a>
                 </div>
             </div>
         </div>
