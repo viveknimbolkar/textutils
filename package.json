@@ -1,0 +1,16 @@
+{
+  "name": "universal-text-processing",
+  "version": "1.0.0",
+  "description": "",
+  "main": "tailwind.config.js",
+  "scripts": {
+    "build": "node scripts/build.js",
+    "serve": "npx serve dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^4.1.18"
+  }
+}

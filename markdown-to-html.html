@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown to HTML Converter Online - Free Tool</title>
+    <meta name="robots" content="index, follow">
+    <meta name="description"
+        content="Convert Markdown to HTML instantly. Free online Markdown to HTML converter for blogs and websites.">
+    <link rel="canonical" href="https://viveknimbolkar.github.io/textutils/markdown-to-html.html" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: { 50: '#f0f9ff', 600: '#0284c7' } }, fontFamily: { sans: ['Inter', 'sans-serif'] } } } }</script>
+    <style type="text/tailwindcss">
+        @layer base { body { @apply antialiased text-slate-900 dark:text-slate-100 bg-slate-50 dark:bg-slate-900; } }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="bg-slate-50 dark:bg-slate-900 min-h-screen flex flex-col" data-tool="md-html">
+    <div id="app-header"></div>
+    <main class="flex-grow container mx-auto px-4 py-8">
+        <nav class="flex mb-4 text-sm text-slate-500">
+            <ol class="flex items-center space-x-2">
+                <li><a href="./" class="hover:text-primary-600">Home</a></li>
+                <li><i class="fa-solid fa-chevron-right text-xs"></i></li>
+                <li><span class="text-slate-900 dark:text-slate-200">Markdown to HTML</span></li>
+            </ol>
+        </nav>
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-10">
+                <h1 class="text-3xl font-extrabold text-slate-900 dark:text-white mb-4">Markdown to HTML Converter</h1>
+                <p class="text-lg text-slate-600 dark:text-slate-400">Instantly convert your Markdown syntax into valid,
+                    clean HTML code.</p>
+            </div>
+
+            <div
+                class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 p-6 mb-12">
+                <div id="dynamic-controls" class="mb-4"></div>
+                <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Input Markdown</label>
+                <textarea id="input-text"
+                    class="w-full h-40 p-4 text-sm bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-primary-600 font-mono resize-none mb-6"
+                    placeholder="# Heading&#10;**bold** and *italic*"></textarea>
+                <div class="flex justify-between items-center mb-2">
+                    <label class="block text-sm font-bold text-slate-700 dark:text-slate-300">HTML Output</label>
+                    <div class="flex gap-2">
+                        <button id="clear-all" class="text-xs text-red-500 hover:text-red-700 px-2 py-1">Clear</button>
+                        <button id="copy-result"
+                            class="text-primary-600 hover:text-primary-700 text-sm font-bold flex items-center gap-1">
+                            <i class="fa-regular fa-copy"></i> Copy
+                        </button>
+                    </div>
+                </div>
+                <textarea id="output-text"
+                    class="w-full h-40 p-4 text-sm bg-slate-100 dark:bg-slate-950 border border-slate-300 dark:border-slate-600 rounded-lg font-mono resize-none focus:outline-none"
+                    readonly></textarea>
+            </div>
+        </div>
+
+        <article class="mt-16 prose dark:prose-invert max-w-none">
+            <h2>Convert Markdown to HTML</h2>
+            <p>Write content in easy-to-read Markdown and convert it to HTML for your blog, website, or documentation
+                with a single click.</p>
+        </article>
+
+        <!-- SEO Content -->
+        <section class="max-w-5xl mx-auto mt-16 mb-12">
+
+            <!-- Features Grid -->
+            <div class="grid md:grid-cols-3 gap-6 mb-12">
+                <div
+                    class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
+                    <div
+                        class="w-10 h-10 bg-fuchsia-100 dark:bg-fuchsia-900/30 text-fuchsia-600 dark:text-fuchsia-400 rounded-lg flex items-center justify-center mb-4 text-xl">
+                        <i class="fa-brands fa-markdown"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900 dark:text-white">Full Syntax Support</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Supports headers, lists, code blocks, tables, and
+                        more.</p>
+                </div>
+                <div
+                    class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
+                    <div
+                        class="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-lg flex items-center justify-center mb-4 text-xl">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900 dark:text-white">Clean HTML</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Generates semantic, standard-compliant HTML tags
+                        without bloat.</p>
+                </div>
+                <div
+                    class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
+                    <div
+                        class="w-10 h-10 bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 rounded-lg flex items-center justify-center mb-4 text-xl">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900 dark:text-white">Instant Preview</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">See the HTML output immediately as our tool
+                        processes text in real-time.</p>
+                </div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12 items-start">
+
+                <!-- About & Benefits -->
+                <div class="prose dark:prose-invert">
+                    <h2
+                        class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-600 dark:from-white dark:to-slate-400 mb-6">
+                        Seamless Content Creation</h2>
+                    <p class="text-slate-600 dark:text-slate-400">
+                        Markdown is the fastest way to write web content, but browsers only understand HTML. Our tool
+                        bridges that gap seamlessly.
+                    </p>
+                    <ul class="space-y-4 marker:text-primary-500">
+                        <li>
+                            <strong class="text-slate-900 dark:text-white">Writers & Bloggers</strong>
+                            <p class="text-xs text-slate-500 m-0">Draft posts in Markdown editors (like Obsidian) and
+                                convert for your CMS.</p>
+                        </li>
+                        <li>
+                            <strong class="text-slate-900 dark:text-white">Developers</strong>
+                            <p class="text-xs text-slate-500 m-0">Quickly generate HTML snippets for READMEs or
+                                documentation pages.</p>
+                        </li>
+                        <li>
+                            <strong class="text-slate-900 dark:text-white">No Dependencies</strong>
+                            <p class="text-xs text-slate-500 m-0">No need to install Pandoc or other heavy conversion
+                                tools locally.</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Styled How-To Guide -->
+                <div
+                    class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-8 border border-slate-100 dark:border-slate-800">
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
+                        <i class="fa-solid fa-list-check text-primary-500"></i> How to Convert
+                    </h3>
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-white dark:bg-slate-800 border-2 border-primary-500 text-primary-600 dark:text-primary-400 font-bold flex items-center justify-center text-sm shadow-sm">
+                                1</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-white text-sm">Write Markdown</h4>
+                                <p class="text-sm text-slate-500 mt-1">Type or paste valid markdown into the top box
+                                    (e.g., # Hello).</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 text-slate-500 font-bold flex items-center justify-center text-sm shadow-sm">
+                                2</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-white text-sm">Convert</h4>
+                                <p class="text-sm text-slate-500 mt-1">The HTML equivalent is generated instantly.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 text-slate-500 font-bold flex items-center justify-center text-sm shadow-sm">
+                                3</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-white text-sm">Copy Code</h4>
+                                <p class="text-sm text-slate-500 mt-1">Copy the HTML snippet to paste into your website
+                                    or editor.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+    <div id="app-footer"></div>
+    <script type="module" src="./js/app.js?v=5"></script>
+    <script type="module" src="./js/modules/formatter-tools.js"></script>
+</body>
+
+</html>

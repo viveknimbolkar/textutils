@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UUID Generator Online - Generate UUIDs Free</title>
+    <meta name="robots" content="index, follow">
+    <meta name="description"
+        content="Free online UUID generator. Create random UUID v4 identifiers instantly. Generate multiple UUIDs at once.">
+    <link rel="canonical" href="https://viveknimbolkar.github.io/textutils/uuid-generator.html" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: { 50: '#f0f9ff', 600: '#0284c7' } }, fontFamily: { sans: ['Inter', 'sans-serif'] } } } }</script>
+    <style type="text/tailwindcss">
+        @layer base { body { @apply antialiased text-slate-900 dark:text-slate-100 bg-slate-50 dark:bg-slate-900; } }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="bg-slate-50 dark:bg-slate-900 min-h-screen flex flex-col" data-tool="uuid-gen">
+    <div id="app-header"></div>
+    <main class="flex-grow container mx-auto px-4 py-8">
+        <nav class="flex mb-4 text-sm text-slate-500">
+            <ol class="flex items-center space-x-2">
+                <li><a href="./" class="hover:text-primary-600">Home</a></li>
+                <li><i class="fa-solid fa-chevron-right text-xs"></i></li>
+                <li><span class="text-slate-900 dark:text-slate-200">UUID Generator</span></li>
+            </ol>
+        </nav>
+        <h1 class="text-3xl font-extrabold text-slate-900 dark:text-white mb-6">UUID Generator</h1>
+        <div class="grid lg:grid-cols-3 gap-8">
+            <div class="lg:col-span-2 space-y-6">
+                <div
+                    class="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-6">
+                    <div id="dynamic-controls" class="mb-4"></div>
+                    <div class="flex justify-between items-center mb-2"><label
+                            class="block text-sm font-bold text-slate-700 dark:text-slate-300">Generated
+                            UUIDs</label><button id="copy-result"
+                            class="text-primary-600 hover:text-primary-700 text-sm font-bold"><i
+                                class="fa-regular fa-copy"></i> Copy</button></div>
+                    <textarea id="output-text"
+                        class="w-full h-48 p-3 text-sm bg-slate-100 dark:bg-slate-950 border border-slate-300 dark:border-slate-600 rounded-lg font-mono resize-none"
+                        readonly></textarea>
+                </div>
+            </div>
+            <div class="lg:col-span-1 space-y-6">
+                <div class="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-xl border border-blue-100 dark:border-blue-800">
+                    <h3 class="font-bold text-blue-900 dark:text-blue-300 mb-2">What is UUID?</h3>
+                    <p class="text-sm text-blue-800 dark:text-blue-200">UUID (Universally Unique Identifier) is a
+                        128-bit identifier used to uniquely identify information in distributed systems.</p>
+                </div>
+            </div>
+        </div>
+
+        <article class="mt-16 prose dark:prose-invert max-w-none">
+            <h2>Free Online UUID Generator</h2>
+            <p>Generate universally unique identifiers (UUIDs) version 4 instantly. Secure, random, and collision-free
+                IDs for your database.</p>
+        </article>
+
+        <!-- SEO Content -->
+        <section class="max-w-5xl mx-auto mt-16 mb-12">
+
+            <!-- Features Grid -->
+            <div class="grid md:grid-cols-3 gap-6 mb-12">
+                <div
+                    class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
+                    <div
+                        class="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-lg flex items-center justify-center mb-4 text-xl">
+                        <i class="fa-solid fa-layer-group"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900 dark:text-white">Bulk Generation</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Need 1000 IDs for testing? Generate hundreds of
+                        valid UUIDs in a single click.</p>
+                </div>
+                <div
+                    class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
+                    <div
+                        class="w-10 h-10 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-lg flex items-center justify-center mb-4 text-xl">
+                        <i class="fa-solid fa-dice"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900 dark:text-white">Version 4</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">We use the standard v4 algorithm (random) which is
+                        the industry standard for database primary keys.</p>
+                </div>
+                <div
+                    class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
+                    <div
+                        class="w-10 h-10 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 rounded-lg flex items-center justify-center mb-4 text-xl">
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900 dark:text-white">Cryptographically Secure</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Uses your browser's Web Crypto API
+                        (`crypto.randomUUID`) for high-entropy randomness.</p>
+                </div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12 items-start">
+
+                <!-- About & Benefits -->
+                <div class="prose dark:prose-invert">
+                    <h2
+                        class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-600 dark:from-white dark:to-slate-400 mb-6">
+                        Why Use UUIDs?</h2>
+                    <p class="text-slate-600 dark:text-slate-400">
+                        UUID (Universally Unique Identifier) allows distributed systems to generate unique IDs without a
+                        central coordinator.
+                    </p>
+                    <ul class="space-y-4 marker:text-blue-500">
+                        <li>
+                            <strong class="text-slate-900 dark:text-white">Database Keys</strong>
+                            <p class="text-xs text-slate-500 m-0">Using UUIDs instead of auto-increment integers makes
+                                merging databases easier.</p>
+                        </li>
+                        <li>
+                            <strong class="text-slate-900 dark:text-white">Security</strong>
+                            <p class="text-xs text-slate-500 m-0">UUIDs are unguessable, making them safer for
+                                public-facing resource URLs.</p>
+                        </li>
+                        <li>
+                            <strong class="text-slate-900 dark:text-white">Offline Creation</strong>
+                            <p class="text-xs text-slate-500 m-0">Mobile apps can generate IDs offline and sync them to
+                                the server later with zero conflicts.</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Styled How-To Guide -->
+                <div
+                    class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-8 border border-slate-100 dark:border-slate-800">
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
+                        <i class="fa-solid fa-list-check text-blue-500"></i> How to Generate
+                    </h3>
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-white dark:bg-slate-800 border-2 border-blue-500 text-blue-600 dark:text-blue-400 font-bold flex items-center justify-center text-sm shadow-sm">
+                                1</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-white text-sm">Select Quantity</h4>
+                                <p class="text-sm text-slate-500 mt-1">Choose how many unique UUIDs you need.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 text-slate-500 font-bold flex items-center justify-center text-sm shadow-sm">
+                                2</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-white text-sm">Generate</h4>
+                                <p class="text-sm text-slate-500 mt-1">Click the button to produce new, random
+                                    identifiers instantly.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 text-slate-500 font-bold flex items-center justify-center text-sm shadow-sm">
+                                3</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-white text-sm">Use</h4>
+                                <p class="text-sm text-slate-500 mt-1">Copy the list and use them in your SQL INSERT
+                                    statements or mock data.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+    <div id="app-footer"></div>
+    <script type="module" src="./js/app.js?v=5"></script>
+    <script type="module" src="./js/modules/generator-tools.js"></script>
+</body>
+
+</html>

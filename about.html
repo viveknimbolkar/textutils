@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Universal Text Processing</title>
+    <meta name="robots" content="index, follow">
+    <meta name="description"
+        content="Learn about TextUtils, our mission to provide fast, secure, and private text processing tools for everyone.">
+    <link rel="canonical" href="https://viveknimbolkar.github.io/textutils/about.html" />
+
+    <!-- Tailwind & FA -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: { 500: '#0ea5e9', 600: '#0284c7' }, dark: { bg: '#0f172a' } } } } }
+    </script>
+    <style type="text/tailwindcss">
+        @layer base { body { @apply antialiased text-slate-900 dark:text-slate-100 bg-slate-50 dark:bg-dark-bg; } }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="bg-slate-50 dark:bg-slate-900 min-h-screen flex flex-col">
+
+    <header
+        class="sticky top-0 z-50 w-full border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur">
+        <div class="container mx-auto px-4 h-16 flex items-center justify-between">
+            <a href="./" class="flex items-center space-x-2 font-bold text-xl text-slate-900 dark:text-white">
+                <i class="fa-solid fa-screwdriver-wrench text-primary-600"></i>
+                <span class="hidden sm:inline-block">TextUtils</span>
+            </a>
+            <nav class="flex items-center gap-4">
+                <a href="./" class="text-sm font-medium hover:text-primary-600">Home</a>
+                <button id="theme-toggle" class="p-2 text-slate-500 rounded-lg dark:text-slate-400">
+                    <i class="fa-solid fa-circle-half-stroke"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow container mx-auto px-4 py-8 max-w-3xl">
+        <h1 class="text-4xl font-extrabold text-slate-900 dark:text-white mb-8">About Us</h1>
+
+        <article class="prose dark:prose-invert max-w-none">
+            <p class="lead text-xl text-slate-600 dark:text-slate-300">We believe simple tasks should be simple, fast,
+                and private.</p>
+
+            <h3>Our Mission</h3>
+            <p>TextUtils was created to solve a common frustration: needing a simple tool (like a word counter or JSON
+                formatter) but finding only ad-bloated, slow, server-dependent websites. We wanted to build a suite of
+                utilities that respects your time and your data.</p>
+
+            <h3>Why Choose Us?</h3>
+            <div class="grid sm:grid-cols-3 gap-6 my-8 not-prose">
+                <div
+                    class="text-center p-4 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 shadow-sm">
+                    <i class="fa-solid fa-bolt text-3xl text-yellow-500 mb-2"></i>
+                    <h4 class="font-bold text-slate-900 dark:text-white">Lightning Fast</h4>
+                    <p class="text-sm text-slate-500">No server roundtrips. Instant results.</p>
+                </div>
+                <div
+                    class="text-center p-4 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 shadow-sm">
+                    <i class="fa-solid fa-shield-halved text-3xl text-green-500 mb-2"></i>
+                    <h4 class="font-bold text-slate-900 dark:text-white">100% Private</h4>
+                    <p class="text-sm text-slate-500">Your text never leaves your browser.</p>
+                </div>
+                <div
+                    class="text-center p-4 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 shadow-sm">
+                    <i class="fa-solid fa-universal-access text-3xl text-blue-500 mb-2"></i>
+                    <h4 class="font-bold text-slate-900 dark:text-white">Accessible</h4>
+                    <p class="text-sm text-slate-500">Clean UI for everyone.</p>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 mt-auto py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <span class="font-bold text-lg text-slate-900 dark:text-white flex items-center gap-2">
+                        <i class="fa-solid fa-screwdriver-wrench"></i> TextUtils
+                    </span>
+                    <p class="mt-2 text-sm text-slate-500">The best collection of online text processing utilities.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-slate-900 dark:text-white mb-4">Writing Tools</h4>
+                    <ul class="space-y-2 text-sm text-slate-500">
+                        <li><a href="./word-counter.html" class="hover:text-primary-600">Word Counter</a></li>
+                        <li><a href="./case-converter.html" class="hover:text-primary-600">Case Converter</a></li>
+                        <li><a href="./text-cleaner.html" class="hover:text-primary-600">Text Cleaner</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-slate-900 dark:text-white mb-4">Dev Tools</h4>
+                    <ul class="space-y-2 text-sm text-slate-500">
+                        <li><a href="./json-formatter.html" class="hover:text-primary-600">JSON Formatter</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-slate-900 dark:text-white mb-4">Legal</h4>
+                    <ul class="space-y-2 text-sm text-slate-500">
+                        <li><a href="./privacy.html" class="hover:text-primary-600">Privacy Policy</a></li>
+                        <li><a href="./terms.html" class="hover:text-primary-600">Terms of Service</a></li>
+                        <li><a href="./contact.html" class="hover:text-primary-600">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div
+                class="mt-8 pt-8 border-t border-slate-100 dark:border-slate-800 flex flex-col md:flex-row justify-between items-center text-sm text-slate-500">
+                <p>&copy; 2024 TextUtils. All rights reserved.</p>
+                <div class="flex space-x-4 mt-4 md:mt-0">
+                    <a href="#" aria-label="Github" class="hover:text-slate-900 dark:hover:text-white"><i
+                            class="fa-brands fa-github text-xl"></i></a>
+                    <a href="#" aria-label="Twitter" class="hover:text-slate-900 dark:hover:text-white"><i
+                            class="fa-brands fa-twitter text-xl"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script type="module" src="./js/app.js?v=4"></script>
+</body>
+
+</html>

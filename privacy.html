@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Universal Text Processing</title>
+    <meta name="robots" content="index, follow">
+    <meta name="description"
+        content="Privacy Policy for Universal Text Processing. We prioritize your privacy with client-side only tools.">
+    <link rel="canonical" href="https://viveknimbolkar.github.io/textutils/privacy.html" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://viveknimbolkar.github.io/textutils/privacy.html">
+    <meta property="og:title" content="Privacy Policy - TextUtils">
+    <meta property="og:description"
+        content="We utilize client-side processing to ensure your data never leaves your device.">
+    <meta property="og:image" content="https://viveknimbolkar.github.io/textutils/assets/images/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://viveknimbolkar.github.io/textutils/privacy.html">
+    <meta property="twitter:title" content="Privacy Policy - TextUtils">
+    <meta property="twitter:description"
+        content="We utilize client-side processing to ensure your data never leaves your device.">
+    <meta property="twitter:image" content="https://viveknimbolkar.github.io/textutils/assets/images/og-image.jpg">
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { 50: '#f0f9ff', 100: '#e0f2fe', 200: '#bae6fd', 300: '#7dd3fc', 400: '#38bdf8', 500: '#0ea5e9', 600: '#0284c7', 700: '#0369a1', 800: '#075985', 900: '#0c4a6e' },
+                        dark: { bg: '#0f172a', surface: '#1e293b', border: '#334155' }
+                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer base { body { @apply antialiased text-slate-900 dark:text-slate-100 bg-slate-50 dark:bg-dark-bg; } }
+    </style>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="bg-slate-50 dark:bg-slate-900 min-h-screen flex flex-col">
+
+    <header
+        class="sticky top-0 z-50 w-full border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur">
+        <div class="container mx-auto px-4 h-16 flex items-center justify-between">
+            <a href="./" class="flex items-center space-x-2 font-bold text-xl text-slate-900 dark:text-white">
+                <i class="fa-solid fa-screwdriver-wrench text-primary-600"></i>
+                <span class="hidden sm:inline-block">TextUtils</span>
+            </a>
+            <nav class="flex items-center gap-4">
+                <a href="./" class="text-sm font-medium hover:text-primary-600">Home</a>
+                <button id="theme-toggle"
+                    class="p-2 text-slate-500 rounded-lg hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800">
+                    <i class="fa-solid fa-moon hidden dark:block"></i>
+                    <i class="fa-solid fa-sun block dark:hidden"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow container mx-auto px-4 py-8 max-w-3xl">
+        <h1 class="text-4xl font-extrabold text-slate-900 dark:text-white mb-8">Privacy Policy</h1>
+
+        <article class="prose dark:prose-invert max-w-none">
+            <p class="lead">Last updated: January 26, 2024</p>
+
+            <h3>1. Introduction</h3>
+            <p>Welcome to <strong>TextUtils</strong>. We respect your privacy and are committed to protecting your
+                personal data. This privacy policy will inform you as to how we look after your personal data when you
+                visit our website.</p>
+
+            <h3>2. Data Collection (Client-Side Only)</h3>
+            <p><strong>Crucially, our tools are designed to run Client-Side.</strong> This means when you paste text
+                into our Word Counter, Case Converter, or JSON Formatter, that text is processed entirely within your
+                web browser's memory. <strong>It is NOT sent to our servers.</strong> We do not see, store, or process
+                your input text.</p>
+
+            <h3>3. Analytics</h3>
+            <p>We may use basic analytics tools (like Google Analytics) to track page visits and tool usage counts. This
+                data is anonymized and does not contain any of the text content you process.</p>
+
+            <h3>4. Cookies</h3>
+            <p>We use local storage to save your preferences (such as Dark Mode). We may use third-party cookies for
+                advertising (Google AdSense) to serve relevant ads.</p>
+
+            <h3>5. Contact</h3>
+            <p>If you have any questions about this privacy policy, please contact us at <a
+                    href="mailto:nimbolkarvivek56@gmail.com">nimbolkarvivek56@gmail.com</a>.</p>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <div id="app-footer"></div>
+
+    <script type="module" src="./js/app.js?v=4"></script>
+</body>
+
+</html>

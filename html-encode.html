@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Entity Encode and Decode - Sanitize Text Online</title>
+    <meta name="robots" content="index, follow">
+    <meta name="description"
+        content="Free online HTML entity encoder. Convert reserved characters to HTML entities to prevent XSS. Safe and secure client-side tool.">
+    <link rel="canonical" href="https://viveknimbolkar.github.io/textutils/html-encode.html" />
+    <meta property="og:title" content="HTML Entity Encode and Decode">
+    <meta property="og:description" content="Sanitize text for HTML display. Prevent XSS. Free Online Tool.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: { 50: '#f0f9ff', 600: '#0284c7' } }, fontFamily: { sans: ['Inter', 'sans-serif'] } } } }
+    </script>
+    <style type="text/tailwindcss">
+        @layer base { body { @apply antialiased text-slate-900 dark:text-slate-100 bg-slate-50 dark:bg-slate-900; } }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="bg-slate-50 dark:bg-slate-900 min-h-screen flex flex-col" data-tool="html">
+
+    <div id="app-header"></div>
+
+    <main class="flex-grow container mx-auto px-4 py-8">
+        <nav class="flex mb-4 text-sm text-slate-500">
+            <ol class="flex items-center space-x-2">
+                <li><a href="./" class="hover:text-primary-600">Home</a></li>
+                <li><i class="fa-solid fa-chevron-right text-xs"></i></li>
+                <li><a href="./encoding-tools.html" class="hover:text-primary-600">Encoding Tools</a></li>
+                <li><i class="fa-solid fa-chevron-right text-xs"></i></li>
+                <li><span class="text-slate-900 dark:text-slate-200">HTML Encoder</span></li>
+            </ol>
+        </nav>
+
+        <h1 class="text-3xl font-extrabold text-slate-900 dark:text-white mb-6">HTML Entity Encoder</h1>
+
+        <div class="grid lg:grid-cols-3 gap-8">
+            <div class="lg:col-span-2 space-y-6">
+                <div
+                    class="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-6">
+                    <div id="dynamic-controls" class="mb-4"></div>
+
+                    <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Input</label>
+                    <textarea id="input-text"
+                        class="w-full h-32 p-3 text-sm bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-primary-600 font-mono resize-none mb-6"
+                        placeholder="Paste HTML or text here..."></textarea>
+
+                    <div class="flex justify-between items-center mb-2">
+                        <label class="block text-sm font-bold text-slate-700 dark:text-slate-300">Result</label>
+                        <div class="flex gap-2">
+                            <button id="clear-all" class="text-xs text-red-500 hover:text-red-700">Clear</button>
+                            <button id="copy-result"
+                                class="text-primary-600 hover:text-primary-700 text-sm font-bold"><i
+                                    class="fa-regular fa-copy"></i> Copy</button>
+                        </div>
+                    </div>
+                    <textarea id="output-text"
+                        class="w-full h-40 p-3 text-sm bg-slate-100 dark:bg-slate-950 border border-slate-300 dark:border-slate-600 rounded-lg font-mono resize-y"
+                        readonly placeholder="Sanitized output..."></textarea>
+                </div>
+            </div>
+
+            <div class="lg:col-span-1 space-y-6">
+                <div class="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-xl border border-blue-100 dark:border-blue-800">
+                    <h3 class="font-bold text-blue-900 dark:text-blue-300 mb-2">Why Encode HTML?</h3>
+                    <p class="text-sm text-blue-800 dark:text-blue-200">Encoding ensures that browsers display text
+                        correctly instead of interpreting it as code. This is crucial for preventing Cross-Site
+                        Scripting (XSS) attacks by neutralizing script tags.</p>
+                </div>
+            </div>
+        </div>
+
+        <article class="mt-16 prose dark:prose-invert max-w-none">
+            <h2>Free HTML Entity Encoder</h2>
+            <p>Convert reserved characters into HTML entities. Sanitize your code to prevent XSS attacks and display
+                code snippets correctly.</p>
+        </article>
+
+        <!-- SEO Content -->
+        <section class="max-w-5xl mx-auto mt-16 mb-12">
+
+            <!-- Features Grid -->
+            <div class="grid md:grid-cols-3 gap-6 mb-12">
+                <div
+                    class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
+                    <div
+                        class="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-lg flex items-center justify-center mb-4 text-xl">
+                        <i class="fa-solid fa-user-shield"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900 dark:text-white">Prevent XSS</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Neutralize malicious script tags by converting
+                        brackets to `&lt;` and `&gt;` entities.</p>
+                </div>
+                <div
+                    class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
+                    <div
+                        class="w-10 h-10 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-lg flex items-center justify-center mb-4 text-xl">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900 dark:text-white">Robust Decoding</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Handles named entities (`&nbsp;`), decimal
+                        (`&#160;`), and hex (`&#xA0;`) formats seamlessly.</p>
+                </div>
+                <div
+                    class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
+                    <div
+                        class="w-10 h-10 bg-sky-100 dark:bg-sky-900/30 text-sky-600 dark:text-sky-400 rounded-lg flex items-center justify-center mb-4 text-xl">
+                        <i class="fa-solid fa-keyboard"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900 dark:text-white">Special Chars</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Correctly escapes invisible characters and symbols
+                        that might break your layout.</p>
+                </div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12 items-start">
+
+                <!-- Left Column: About & Technical Details -->
+                <div class="prose dark:prose-invert">
+                    <section class="mb-12">
+                        <h2
+                            class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-600 dark:from-white dark:to-slate-400 mb-6">
+                            Why Escape HTML?</h2>
+                        <p class="text-slate-600 dark:text-slate-400">
+                            In HTML, characters like `<`, `>`, `&`, and `"` have special meaning. If you want to display
+                                them as text (e.g., in a code tutorial), you must "escape" them.
+                        </p>
+                        <ul class="space-y-4 marker:text-blue-500">
+                            <li>
+                                <strong class="text-slate-900 dark:text-white">Security</strong>
+                                <p class="text-xs text-slate-500 m-0">Sanitizing user input prevents hackers from
+                                    injecting
+                                    malicious JavaScript execution (XSS).</p>
+                            </li>
+                            <li>
+                                <strong class="text-slate-900 dark:text-white">Data Integrity</strong>
+                                <p class="text-xs text-slate-500 m-0">Ensures that text content containing brackets
+                                    isn't
+                                    accidentally rendered as broken HTML tags.</p>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2
+                            class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 mb-6">
+                            Technical Details</h2>
+
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Named Entities</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm">
+                            HTML provides easy-to-remember names for common characters. For example, `&amp;` stands for
+                            ampersand (`&`) and `&lt;` for less-than (`<`). </p>
+
+                                <h3 class="text-lg font-bold text-slate-900 dark:text-white mt-6 mb-2">Numeric Entities
+                                </h3>
+                                <p class="text-slate-600 dark:text-slate-400 text-sm">
+                                    Any Unicode character can be represented by its decimal (e.g., `&#60;`) or
+                                    hexadecimal (e.g.,
+                                    `&#x3C;`) code point. This is useful for characters without named entities.
+                                </p>
+
+                                <h3 class="text-lg font-bold text-slate-900 dark:text-white mt-6 mb-2">Prevention of XSS
+                                </h3>
+                                <p class="text-slate-600 dark:text-slate-400 text-sm">
+                                    By converting special characters like `
+                                    <script>` into ` & lt; script & gt;`, the browser treats them
+                            as harmless text instead of executable code, neutralizing Cross-Site Scripting attacks.
+                        </p>
+                    </section>
+                </div>
+
+                <!-- Styled How-To Guide -->
+                <div
+                    class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-8 border border-slate-100 dark:border-slate-800">
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
+                        <i class="fa-solid fa-list-check text-blue-500"></i> How to use
+                    </h3>
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-white dark:bg-slate-800 border-2 border-blue-500 text-blue-600 dark:text-blue-400 font-bold flex items-center justify-center text-sm shadow-sm">
+                                1</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-white text-sm">Paste HTML</h4>
+                                <p class="text-sm text-slate-500 mt-1">Insert your raw HTML code or text with special
+                                    characters.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 text-slate-500 font-bold flex items-center justify-center text-sm shadow-sm">
+                                2</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-white text-sm">Convert</h4>
+                                <p class="text-sm text-slate-500 mt-1">Click "Encode" to sanitize text to HTML entities,
+                                    or "Decode" to convert back.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 text-slate-500 font-bold flex items-center justify-center text-sm shadow-sm">
+                                3</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-white text-sm">Use Safely</h4>
+                                <p class="text-sm text-slate-500 mt-1">Copy the sanitized code for use in your web
+                                    pages.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <div id="app-footer"></div>
+    <script type="module" src="./js/app.js?v=5"></script>
+</body>
+
+</html>

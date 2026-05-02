@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>N-gram Generator Online - Bigram Trigram Analyzer Free</title>
+    <meta name="robots" content="index, follow">
+    <meta name="description"
+        content="Free N-gram generator. Create bigrams, trigrams, and n-grams from text. Analyze word patterns for SEO and content optimization.">
+    <link rel="canonical" href="https://viveknimbolkar.github.io/textutils/ngram-generator.html" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: { 50: '#f0f9ff', 100: '#e0f2fe', 600: '#0284c7', 700: '#0369a1' } }, fontFamily: { sans: ['Inter', 'sans-serif'] } } } }</script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="bg-slate-50 dark:bg-slate-900 min-h-screen flex flex-col" data-tool="ngram-gen">
+    <div id="app-header"></div>
+    <main class="flex-grow container mx-auto px-4 py-8">
+        <nav class="flex mb-4 text-sm text-slate-500">
+            <ol class="flex items-center space-x-2">
+                <li><a href="./" class="hover:text-primary-600">Home</a></li>
+                <li><i class="fa-solid fa-chevron-right text-xs"></i></li>
+                <li><span class="text-slate-900 dark:text-slate-200">N-gram Generator</span></li>
+            </ol>
+        </nav>
+        <h1 class="text-3xl font-extrabold text-slate-900 dark:text-white mb-6">N-gram Generator</h1>
+        <!-- Main Tool Area -->
+        <div class="max-w-4xl mx-auto mb-16">
+            <div
+                class="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-6">
+                <div id="dynamic-controls"></div>
+                <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Paste Your
+                    Content</label>
+                <textarea id="input-text" rows="8" placeholder="Paste your content to generate n-grams..."
+                    class="w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white resize-none"></textarea>
+                <div id="results-panel" class="mt-6"></div>
+            </div>
+        </div>
+
+        <article class="mt-16 prose dark:prose-invert max-w-none">
+            <h2>Free N-gram Generator</h2>
+            <p>Generate Bigrams, Trigrams, and multi-word phrases from your text. Analyze word adjacency and recurring
+                patterns for linguistic analysis or SEO.</p>
+        </article>
+
+        <!-- SEO Content -->
+        <section class="max-w-5xl mx-auto mt-16 mb-12">
+
+            <!-- Features Grid -->
+            <div class="grid md:grid-cols-3 gap-6 mb-12">
+                <div
+                    class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
+                    <div
+                        class="w-10 h-10 bg-cyan-100 dark:bg-cyan-900/30 text-cyan-600 dark:text-cyan-400 rounded-lg flex items-center justify-center mb-4 text-xl">
+                        <i class="fa-solid fa-code-compare"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900 dark:text-white">Pattern Logic</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Breaks text down into contiguous sequences of N
+                        items to find standard phrases.</p>
+                </div>
+                <div
+                    class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
+                    <div
+                        class="w-10 h-10 bg-teal-100 dark:bg-teal-900/30 text-teal-600 dark:text-teal-400 rounded-lg flex items-center justify-center mb-4 text-xl">
+                        <i class="fa-solid fa-list-ol"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900 dark:text-white">Frequency Sort</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Instantly sorts the generated n-grams by how often
+                        they appear in the document.</p>
+                </div>
+                <div
+                    class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
+                    <div
+                        class="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-lg flex items-center justify-center mb-4 text-xl">
+                        <i class="fa-solid fa-file-export"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900 dark:text-white">Easy Export</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Copy the entire list of bigrams/trigrams to CSV or
+                        clipboard for further analysis.</p>
+                </div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12 items-start">
+
+                <!-- About & Benefits -->
+                <div class="prose dark:prose-invert">
+                    <h2
+                        class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-600 dark:from-white dark:to-slate-400 mb-6">
+                        Why Use N-grams?</h2>
+                    <p class="text-slate-600 dark:text-slate-400">
+                        N-grams help keyphrase analysis by moving beyond single words.
+                    </p>
+                    <ul class="space-y-4 marker:text-cyan-500">
+                        <li>
+                            <strong class="text-slate-900 dark:text-white">Predictive Text</strong>
+                            <p class="text-xs text-slate-500 m-0">Understanding which words commonly follow others is
+                                the basis of autocomplete systems.</p>
+                        </li>
+                        <li>
+                            <strong class="text-slate-900 dark:text-white">Plagiarism Detection</strong>
+                            <p class="text-xs text-slate-500 m-0">Matching long n-grams (e.g., 5-grams) is a reliable
+                                way to detect copied text snippets.</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Styled How-To Guide -->
+                <div
+                    class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-8 border border-slate-100 dark:border-slate-800">
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
+                        <i class="fa-solid fa-list-check text-cyan-500"></i> Generation Guide
+                    </h3>
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-white dark:bg-slate-800 border-2 border-cyan-500 text-cyan-600 dark:text-cyan-400 font-bold flex items-center justify-center text-sm shadow-sm">
+                                1</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-white text-sm">Input Text</h4>
+                                <p class="text-sm text-slate-500 mt-1">Paste the corpus you want to analyze.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 text-slate-500 font-bold flex items-center justify-center text-sm shadow-sm">
+                                2</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-white text-sm">Select N</h4>
+                                <p class="text-sm text-slate-500 mt-1">Choose unigrams (1), bigrams (2), or trigrams (3)
+                                    from the dropdown.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 text-slate-500 font-bold flex items-center justify-center text-sm shadow-sm">
+                                3</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-white text-sm">Analyze</h4>
+                                <p class="text-sm text-slate-500 mt-1">View the frequency table.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+    <div id="app-footer"></div>
+    <script type="module" src="./js/app.js?v=6"></script>
+</body>
+
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keyword Extractor Online - Extract Keywords Free</title>
+    <meta name="robots" content="index, follow">
+    <meta name="description"
+        content="Free keyword extractor tool. Extract important keywords from any text. Identify main topics and optimize your content for SEO.">
+    <link rel="canonical" href="https://viveknimbolkar.github.io/textutils/keyword-extractor.html" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: { 50: '#f0f9ff', 100: '#e0f2fe', 600: '#0284c7', 700: '#0369a1' } }, fontFamily: { sans: ['Inter', 'sans-serif'] } } } }</script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="bg-slate-50 dark:bg-slate-900 min-h-screen flex flex-col" data-tool="keyword-extract">
+    <div id="app-header"></div>
+    <main class="flex-grow container mx-auto px-4 py-8">
+        <nav class="flex mb-4 text-sm text-slate-500">
+            <ol class="flex items-center space-x-2">
+                <li><a href="./" class="hover:text-primary-600">Home</a></li>
+                <li><i class="fa-solid fa-chevron-right text-xs"></i></li>
+                <li><span class="text-slate-900 dark:text-slate-200">Keyword Extractor</span></li>
+            </ol>
+        </nav>
+        <h1 class="text-3xl font-extrabold text-slate-900 dark:text-white mb-6">Keyword Extractor</h1>
+        <!-- Main Tool Area -->
+        <div class="max-w-4xl mx-auto mb-16">
+            <div
+                class="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-6">
+                <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Paste Your
+                    Content</label>
+                <textarea id="input-text" rows="8"
+                    placeholder="Paste your article, blog post, or any text content here..."
+                    class="w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white resize-none"></textarea>
+                <div id="results-panel" class="mt-6"></div>
+            </div>
+        </div>
+
+        <article class="mt-16 prose dark:prose-invert max-w-none">
+            <h2>Free Post Keyword Extractor</h2>
+            <p>Automatically keyphrases and important topics from any text. Use TF-IDF analysis to find the core subject
+                matter of your content.</p>
+        </article>
+
+        <!-- SEO Content -->
+        <section class="max-w-5xl mx-auto mt-16 mb-12">
+
+            <!-- Features Grid -->
+            <div class="grid md:grid-cols-3 gap-6 mb-12">
+                <div
+                    class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
+                    <div
+                        class="w-10 h-10 bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 rounded-lg flex items-center justify-center mb-4 text-xl">
+                        <i class="fa-solid fa-filter"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900 dark:text-white">Smart Filtering</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Automatically removes common "stop words" (the,
+                        and, is) to reveal meaningful topics.</p>
+                </div>
+                <div
+                    class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
+                    <div
+                        class="w-10 h-10 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-lg flex items-center justify-center mb-4 text-xl">
+                        <i class="fa-solid fa-microchip"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900 dark:text-white">TF-IDF Logic</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Uses statistical analysis to determine which words
+                        are most unique and important to this specific document.</p>
+                </div>
+                <div
+                    class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
+                    <div
+                        class="w-10 h-10 bg-fuchsia-100 dark:bg-fuchsia-900/30 text-fuchsia-600 dark:text-fuchsia-400 rounded-lg flex items-center justify-center mb-4 text-xl">
+                        <i class="fa-solid fa-tags"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900 dark:text-white">Tag Generation</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Perfect for auto-generating tags for blog posts,
+                        YouTube videos, or image metadata.</p>
+                </div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12 items-start">
+
+                <!-- About & Benefits -->
+                <div class="prose dark:prose-invert">
+                    <h2
+                        class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-600 dark:from-white dark:to-slate-400 mb-6">
+                        Why Extract Keywords?</h2>
+                    <p class="text-slate-600 dark:text-slate-400">
+                        Understanding the core topics of your text helps you optimize for search engines and organize
+                        content effectively.
+                    </p>
+                    <ul class="space-y-4 marker:text-purple-500">
+                        <li>
+                            <strong class="text-slate-900 dark:text-white">Competitor Analysis</strong>
+                            <p class="text-xs text-slate-500 m-0">Paste a competitor's article to see exactly which
+                                keywords they are targeting.</p>
+                        </li>
+                        <li>
+                            <strong class="text-slate-900 dark:text-white">Content Optimization</strong>
+                            <p class="text-xs text-slate-500 m-0">Ensure you are actually writing about what you *think*
+                                you are writing about.</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Styled How-To Guide -->
+                <div
+                    class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-8 border border-slate-100 dark:border-slate-800">
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
+                        <i class="fa-solid fa-list-check text-purple-500"></i> Extraction Guide
+                    </h3>
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-white dark:bg-slate-800 border-2 border-purple-500 text-purple-600 dark:text-purple-400 font-bold flex items-center justify-center text-sm shadow-sm">
+                                1</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-white text-sm">Input Text</h4>
+                                <p class="text-sm text-slate-500 mt-1">Paste your source text. Longer content usually
+                                    yields better results.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 text-slate-500 font-bold flex items-center justify-center text-sm shadow-sm">
+                                2</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-white text-sm">Review List</h4>
+                                <p class="text-sm text-slate-500 mt-1">See the top keywords sorted by
+                                    relevance/frequency.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 text-slate-500 font-bold flex items-center justify-center text-sm shadow-sm">
+                                3</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-white text-sm">Export</h4>
+                                <p class="text-sm text-slate-500 mt-1">Copy the list to use as tags or metatags.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+    <div id="app-footer"></div>
+    <script type="module" src="./js/app.js?v=6"></script>
+</body>
+
+</html>

@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universal Text Processing - Free Online Text Tools</title>
+    <meta name="robots" content="index, follow">
+    <meta name="description"
+        content="A collection of free, fast, and secure online text processing tools. Word counters, case converters, JSON formatters, and more. 100% client-side.">
+    <!-- Canonical -->
+    <link rel="canonical" href="https://viveknimbolkar.github.io/textutils/" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://viveknimbolkar.github.io/textutils/">
+    <meta property="og:title" content="Universal Text Processing - Free Online Text Tools">
+    <meta property="og:description" content="Free, fast, and secure online text tools. 100% client-side processing.">
+    <meta property="og:image" content="https://viveknimbolkar.github.io/textutils/assets/images/og-home.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://viveknimbolkar.github.io/textutils/">
+    <meta property="twitter:title" content="Universal Text Processing - Free Online Text Tools">
+    <meta property="twitter:description"
+        content="Free, fast, and secure online text tools. 100% client-side processing.">
+    <meta property="twitter:image" content="https://viveknimbolkar.github.io/textutils/assets/images/og-home.jpg">
+
+    <!-- Icons -->
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛠️</text></svg>">
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { 50: '#f0f9ff', 100: '#e0f2fe', 200: '#bae6fd', 300: '#7dd3fc', 400: '#38bdf8', 500: '#0ea5e9', 600: '#0284c7', 700: '#0369a1', 800: '#075985', 900: '#0c4a6e' },
+                        dark: { bg: '#0f172a', surface: '#1e293b', border: '#334155' }
+                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer base {
+            body { @apply antialiased text-slate-900 dark:text-slate-100 bg-slate-50 dark:bg-dark-bg; }
+        }
+        .btn-primary { @apply px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-lg transition-colors font-medium shadow-sm hover:shadow-md; }
+    </style>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="bg-slate-50 dark:bg-slate-900 min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <div id="app-header"></div>
+
+
+    <!-- Main Content -->
+    <main class="flex-grow container mx-auto px-4 py-8">
+
+        <!-- Hero -->
+        <section class="text-center mb-16">
+            <h1
+                class="text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-5xl md:text-6xl mb-4">
+                <span class="text-primary-600 dark:text-primary-400">56+</span> Free Text Tools
+            </h1>
+            <p class="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto mb-6">
+                The ultimate collection of secure, client-side text utilities for developers and writers.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4 text-sm">
+                <span
+                    class="inline-flex items-center gap-2 px-4 py-2 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-full font-medium">
+                    <i class="fa-solid fa-shield-halved"></i> 100% Secure
+                </span>
+                <span
+                    class="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full font-medium">
+                    <i class="fa-solid fa-laptop"></i> Runs Locally
+                </span>
+                <span
+                    class="inline-flex items-center gap-2 px-4 py-2 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full font-medium">
+                    <i class="fa-solid fa-lock"></i> No Data Leaves Your Browser
+                </span>
+            </div>
+        </section>
+
+        <!-- Tools Grid -->
+        <section>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-6">All Tools</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+                <!-- Word Counter Card -->
+                <a href="./word-counter.html"
+                    class="group block p-6 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all hover:border-primary-500 dark:hover:border-primary-500">
+                    <div class="flex items-center gap-4 mb-4">
+                        <span
+                            class="w-12 h-12 flex items-center justify-center rounded-lg bg-primary-100 text-primary-600 dark:bg-primary-900/30 dark:text-primary-400 text-2xl">
+                            <i class="fa-solid fa-pen-nib"></i>
+                        </span>
+                        <h3
+                            class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400">
+                            Word Counter</h3>
+                    </div>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm">Real-time word, character, and paragraph
+                        counting for your writing.</p>
+                </a>
+
+                <!-- Case Converter Card -->
+                <a href="./case-converter.html"
+                    class="group block p-6 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all hover:border-primary-500 dark:hover:border-primary-500">
+                    <div class="flex items-center gap-4 mb-4">
+                        <span
+                            class="w-12 h-12 flex items-center justify-center rounded-lg bg-indigo-100 text-indigo-600 dark:bg-indigo-900/30 dark:text-indigo-400 text-2xl">
+                            <i class="fa-solid fa-font"></i>
+                        </span>
+                        <h3
+                            class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400">
+                            Case Converter</h3>
+                    </div>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm">Easily convert text between Upper, Lower,
+                        Title, and Sentence case.</p>
+                </a>
+
+                <!-- JSON Formatter Card -->
+                <a href="./json-formatter.html"
+                    class="group block p-6 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all hover:border-primary-500 dark:hover:border-primary-500">
+                    <div class="flex items-center gap-4 mb-4">
+                        <span
+                            class="w-12 h-12 flex items-center justify-center rounded-lg bg-emerald-100 text-emerald-600 dark:bg-emerald-900/30 dark:text-emerald-400 text-2xl">
+                            <i class="fa-solid fa-code"></i>
+                        </span>
+                        <h3
+                            class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400">
+                            JSON Formatter</h3>
+                    </div>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm">Validate, prettify, and minify your JSON data
+                        instantly.</p>
+                </a>
+
+                <!-- Text Cleaner Card -->
+                <a href="./text-cleaner.html"
+                    class="group block p-6 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all hover:border-primary-500 dark:hover:border-primary-500">
+                    <div class="flex items-center gap-4 mb-4">
+                        <span
+                            class="w-12 h-12 flex items-center justify-center rounded-lg bg-pink-100 text-pink-600 dark:bg-pink-900/30 dark:text-pink-400 text-2xl">
+                            <i class="fa-solid fa-broom"></i>
+                        </span>
+                        <h3
+                            class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400">
+                            Text Cleaner</h3>
+                    </div>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm">Remove spaces, duplicate lines, emojis, and
+                        normalize text.</p>
+                </a>
+
+                <!-- Duplicate Line Remover Card -->
+                <a href="./duplicate-line-remover.html"
+                    class="group block p-6 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all hover:border-primary-500 dark:hover:border-primary-500">
+                    <div class="flex items-center gap-4 mb-4">
+                        <span
+                            class="w-12 h-12 flex items-center justify-center rounded-lg bg-amber-100 text-amber-600 dark:bg-amber-900/30 dark:text-amber-400 text-2xl">
+                            <i class="fa-solid fa-filter-circle-xmark"></i>
+                        </span>
+                        <h3
+                            class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400">
+                            Duplicate Remover</h3>
+                    </div>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm">Remove duplicate lines and keep unique entries
+                        from any text.</p>
+                </a>
+
+                <!-- Find & Replace Card -->
+                <a href="./find-replace.html"
+                    class="group block p-6 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all hover:border-primary-500 dark:hover:border-primary-500">
+                    <div class="flex items-center gap-4 mb-4">
+                        <span
+                            class="w-12 h-12 flex items-center justify-center rounded-lg bg-cyan-100 text-cyan-600 dark:bg-cyan-900/30 dark:text-cyan-400 text-2xl">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </span>
+                        <h3
+                            class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400">
+                            Find & Replace</h3>
+                    </div>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm">Search, highlight matches, filter lines, and
+                        grep with Regex.</p>
+                </a>
+
+                <!-- Diff View Card -->
+                <a href="./diff-view.html"
+                    class="group block p-6 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all hover:border-primary-500 dark:hover:border-primary-500">
+                    <div class="flex items-center gap-4 mb-4">
+                        <span
+                            class="w-12 h-12 flex items-center justify-center rounded-lg bg-rose-100 text-rose-600 dark:bg-rose-900/30 dark:text-rose-400 text-2xl">
+                            <i class="fa-solid fa-code-compare"></i>
+                        </span>
+                        <h3
+                            class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400">
+                            Diff View</h3>
+                    </div>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm">Compare text with highlighted differences.</p>
+                </a>
+
+                <!-- Side-by-Side Compare Card -->
+                <a href="./side-compare.html"
+                    class="group block p-6 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all hover:border-primary-500 dark:hover:border-primary-500">
+                    <div class="flex items-center gap-4 mb-4">
+                        <span
+                            class="w-12 h-12 flex items-center justify-center rounded-lg bg-violet-100 text-violet-600 dark:bg-violet-900/30 dark:text-violet-400 text-2xl">
+                            <i class="fa-solid fa-columns"></i>
+                        </span>
+                        <h3
+                            class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400">
+                            Side-by-Side</h3>
+                    </div>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm">Compare documents in dual-panel view.</p>
+                </a>
+
+                <!-- Base64 Card -->
+                <a href="./base64-encode.html"
+                    class="group block p-6 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all hover:border-primary-500 dark:hover:border-primary-500">
+                    <div class="flex items-center gap-4 mb-4">
+                        <span
+                            class="w-12 h-12 flex items-center justify-center rounded-lg bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 text-2xl">
+                            <i class="fa-solid fa-font"></i>
+                        </span>
+                        <h3
+                            class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400">
+                            Base64 Encoder</h3>
+                    </div>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm">Encode/Decode Base64 strings instantly.</p>
+                </a>
+
+                <!-- URL Encode Card -->
+                <a href="./url-encode.html"
+                    class="group block p-6 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all hover:border-primary-500 dark:hover:border-primary-500">
+                    <div class="flex items-center gap-4 mb-4">
+                        <span
+                            class="w-12 h-12 flex items-center justify-center rounded-lg bg-orange-100 text-orange-600 dark:bg-orange-900/30 dark:text-orange-400 text-2xl">
+                            <i class="fa-solid fa-link"></i>
+                        </span>
+                        <h3
+                            class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400">
+                            URL Encoder</h3>
+                    </div>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm">Encode URLs for safe transmission.</p>
+                </a>
+
+                <!-- Hash Generator Card -->
+                <a href="./hash-generator.html"
+                    class="group block p-6 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all hover:border-primary-500 dark:hover:border-primary-500">
+                    <div class="flex items-center gap-4 mb-4">
+                        <span
+                            class="w-12 h-12 flex items-center justify-center rounded-lg bg-emerald-100 text-emerald-600 dark:bg-emerald-900/30 dark:text-emerald-400 text-2xl">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </span>
+                        <h3
+                            class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400">
+                            Hash Generator</h3>
+                    </div>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm">Generate SHA-256, SHA-512, and MD5 hashes.</p>
+                </a>
+
+                <!-- HTML Encoder Card -->
+                <a href="./html-encode.html"
+                    class="group block p-6 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all hover:border-primary-500 dark:hover:border-primary-500">
+                    <div class="flex items-center gap-4 mb-4">
+                        <span
+                            class="w-12 h-12 flex items-center justify-center rounded-lg bg-red-100 text-red-600 dark:bg-red-900/30 dark:text-red-400 text-2xl">
+                            <i class="fa-solid fa-code"></i>
+                        </span>
+                        <h3
+                            class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400">
+                            HTML Encoder</h3>
+                    </div>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm">Convert characters to HTML entities.</p>
+                </a>
+
+                <!-- Password Checker Card -->
+                <a href="./password-strength.html"
+                    class="group block p-6 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all hover:border-primary-500 dark:hover:border-primary-500">
+                    <div class="flex items-center gap-4 mb-4">
+                        <span
+                            class="w-12 h-12 flex items-center justify-center rounded-lg bg-violet-100 text-violet-600 dark:bg-violet-900/30 dark:text-violet-400 text-2xl">
+                            <i class="fa-solid fa-lock"></i>
+                        </span>
+                        <h3
+                            class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400">
+                            Password Checker</h3>
+                    </div>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm">Test password strength and entropy.</p>
+                </a>
+
+                <!-- Text Ciphers Card -->
+                <a href="./text-ciphers.html"
+                    class="group block p-6 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all hover:border-primary-500 dark:hover:border-primary-500">
+                    <div class="flex items-center gap-4 mb-4">
+                        <span
+                            class="w-12 h-12 flex items-center justify-center rounded-lg bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-400 text-2xl">
+                            <i class="fa-solid fa-user-secret"></i>
+                        </span>
+                        <h3
+                            class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400">
+                            Text Ciphers</h3>
+                    </div>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm">ROT13, Caesar Cipher, and Obfuscator.</p>
+                </a>
+
+                <!-- JWT Decoder Card -->
+                <a href="./jwt-decoder.html"
+                    class="group block p-6 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all hover:border-primary-500 dark:hover:border-primary-500">
+                    <div class="flex items-center gap-4 mb-4">
+                        <span
+                            class="w-12 h-12 flex items-center justify-center rounded-lg bg-amber-100 text-amber-600 dark:bg-amber-900/30 dark:text-amber-400 text-2xl">
+                            <i class="fa-solid fa-key"></i>
+                        </span>
+                        <h3
+                            class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400">
+                            JWT Decoder</h3>
+                    </div>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm">Decode JSON Web Tokens instantly.</p>
+                </a>
+
+                <!-- JSON Formatter Card -->
+                <a href="./json-format.html"
+                    class="group block p-6 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all hover:border-primary-500 dark:hover:border-primary-500">
+                    <div class="flex items-center gap-4 mb-4">
+                        <span
+                            class="w-12 h-12 flex items-center justify-center rounded-lg bg-emerald-100 text-emerald-600 dark:bg-emerald-900/30 dark:text-emerald-400 text-2xl">
+                            <i class="fa-solid fa-code"></i>
+                        </span>
+                        <h3
+                            class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400">
+                            JSON Formatter</h3>
+                    </div>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm">Beautify and indent JSON data.</p>
+                </a>
+
+                <!-- JSON Minifier Card -->
+                <a href="./json-minify.html"
+                    class="group block p-6 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all hover:border-primary-500 dark:hover:border-primary-500">
+                    <div class="flex items-center gap-4 mb-4">
+                        <span
+                            class="w-12 h-12 flex items-center justify-center rounded-lg bg-orange-100 text-orange-600 dark:bg-orange-900/30 dark:text-orange-400 text-2xl">
+                            <i class="fa-solid fa-compress"></i>
+                        </span>
+                        <h3
+                            class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400">
+                            JSON Minifier</h3>
+                    </div>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm">Compress JSON by removing whitespace.</p>
+                </a>
+
+                <!-- JSON Validator Card -->
+                <a href="./json-validate.html"
+                    class="group block p-6 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all hover:border-primary-500 dark:hover:border-primary-500">
+                    <div class="flex items-center gap-4 mb-4">
+                        <span
+                            class="w-12 h-12 flex items-center justify-center rounded-lg bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400 text-2xl">
+                            <i class="fa-solid fa-check-circle"></i>
+                        </span>
+                        <h3
+                            class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400">
+                            JSON Validator</h3>
+                    </div>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm">Check if JSON is valid and find errors.</p>
+                </a>
+
+                <!-- JSON to CSV Card -->
+                <a href="./json-to-csv.html"
+                    class="group block p-6 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all hover:border-primary-500 dark:hover:border-primary-500">
+                    <div class="flex items-center gap-4 mb-4">
+                        <span
+                            class="w-12 h-12 flex items-center justify-center rounded-lg bg-purple-100 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400 text-2xl">
+                            <i class="fa-solid fa-table"></i>
+                        </span>
+                        <h3
+                            class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400">
+                            JSON → CSV</h3>
+                    </div>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm">Convert JSON arrays to CSV format.</p>
+                </a>
+
+                <!-- CSV to JSON Card -->
+                <a href="./csv-to-json.html"
+                    class="group block p-6 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all hover:border-primary-500 dark:hover:border-primary-500">
+                    <div class="flex items-center gap-4 mb-4">
+                        <span
+                            class="w-12 h-12 flex items-center justify-center rounded-lg bg-teal-100 text-teal-600 dark:bg-teal-900/30 dark:text-teal-400 text-2xl">
+                            <i class="fa-solid fa-file-csv"></i>
+                        </span>
+                        <h3
+                            class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400">
+                            CSV → JSON</h3>
+                    </div>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm">Convert CSV data to JSON array.</p>
+                </a>
+
+                <!-- XML Formatter Card -->
+                <a href="./xml-format.html"
+                    class="group block p-6 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all hover:border-primary-500 dark:hover:border-primary-500">
+                    <div class="flex items-center gap-4 mb-4">
+                        <span
+                            class="w-12 h-12 flex items-center justify-center rounded-lg bg-cyan-100 text-cyan-600 dark:bg-cyan-900/30 dark:text-cyan-400 text-2xl">
+                            <i class="fa-solid fa-file-code"></i>
+                        </span>
+                        <h3
+                            class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400">
+                            XML Formatter</h3>
+                    </div>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm">Beautify and indent XML data.</p>
+                </a>
+
+                <!-- XML Minifier Card -->
+                <a href="./xml-minify.html"
+                    class="group block p-6 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all hover:border-primary-500 dark:hover:border-primary-500">
+                    <div class="flex items-center gap-4 mb-4">
+                        <span
+                            class="w-12 h-12 flex items-center justify-center rounded-lg bg-rose-100 text-rose-600 dark:bg-rose-900/30 dark:text-rose-400 text-2xl">
+                            <i class="fa-solid fa-file-zipper"></i>
+                        </span>
+                        <h3
+                            class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400">
+                            XML Minifier</h3>
+                    </div>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm">Compress XML by removing whitespace.</p>
+                </a>
+
+                <!-- YAML Formatter Card -->
+                <a href="./yaml-format.html"
+                    class="group block p-6 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all hover:border-primary-500 dark:hover:border-primary-500">
+                    <div class="flex items-center gap-4 mb-4">
+                        <span
+                            class="w-12 h-12 flex items-center justify-center rounded-lg bg-yellow-100 text-yellow-600 dark:bg-yellow-900/30 dark:text-yellow-400 text-2xl">
+                            <i class="fa-solid fa-align-left"></i>
+                        </span>
+                        <h3
+                            class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400">
+                            YAML Formatter</h3>
+                    </div>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm">Clean up YAML indentation.</p>
+                </a>
+
+                <!-- YAML to JSON Card -->
+                <a href="./yaml-to-json.html"
+                    class="group block p-6 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all hover:border-primary-500 dark:hover:border-primary-500">
+                    <div class="flex items-center gap-4 mb-4">
+                        <span
+                            class="w-12 h-12 flex items-center justify-center rounded-lg bg-lime-100 text-lime-600 dark:bg-lime-900/30 dark:text-lime-400 text-2xl">
+                            <i class="fa-solid fa-right-left"></i>
+                        </span>
+                        <h3
+                            class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400">
+                            YAML → JSON</h3>
+                    </div>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm">Convert YAML to JSON format.</p>
+                </a>
+
+                <!-- Markdown Formatter Card -->
+                <a href="./markdown-format.html"
+                    class="group block p-6 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all hover:border-primary-500 dark:hover:border-primary-500">
+                    <div class="flex items-center gap-4 mb-4">
+                        <span
+                            class="w-12 h-12 flex items-center justify-center rounded-lg bg-violet-100 text-violet-600 dark:bg-violet-900/30 dark:text-violet-400 text-2xl">
+                            <i class="fa-brands fa-markdown"></i>
+                        </span>
+                        <h3
+                            class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400">
+                            MD Formatter</h3>
+                    </div>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm">Normalize Markdown headers and lists.</p>
+                </a>
+
+                <!-- Markdown to HTML Card -->
+                <a href="./markdown-to-html.html"
+                    class="group block p-6 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all hover:border-primary-500 dark:hover:border-primary-500">
+                    <div class="flex items-center gap-4 mb-4">
+                        <span
+                            class="w-12 h-12 flex items-center justify-center rounded-lg bg-fuchsia-100 text-fuchsia-600 dark:bg-fuchsia-900/30 dark:text-fuchsia-400 text-2xl">
+                            <i class="fa-solid fa-arrow-right-arrow-left"></i>
+                        </span>
+                        <h3
+                            class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400">
+                            MD → HTML</h3>
+                    </div>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm">Convert Markdown to HTML code.</p>
+                </a>
+
+                <!-- HTML to Markdown Card -->
+                <a href="./html-to-markdown.html"
+                    class="group block p-6 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all hover:border-primary-500 dark:hover:border-primary-500">
+                    <div class="flex items-center gap-4 mb-4">
+                        <span
+                            class="w-12 h-12 flex items-center justify-center rounded-lg bg-pink-100 text-pink-600 dark:bg-pink-900/30 dark:text-pink-400 text-2xl">
+                            <i class="fa-solid fa-code"></i>
+                        </span>
+                        <h3
+                            class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400">
+                            HTML → MD</h3>
+                    </div>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm">Convert HTML to Markdown format.</p>
+                </a>
+
+                <!-- SQL Formatter Card -->
+                <a href="./sql-format.html"
+                    class="group block p-6 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all hover:border-primary-500 dark:hover:border-primary-500">
+                    <div class="flex items-center gap-4 mb-4">
+                        <span
+                            class="w-12 h-12 flex items-center justify-center rounded-lg bg-sky-100 text-sky-600 dark:bg-sky-900/30 dark:text-sky-400 text-2xl">
+                            <i class="fa-solid fa-database"></i>
+                        </span>
+                        <h3
+                            class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400">
+                            SQL Formatter</h3>
+                    </div>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm">Beautify SQL queries with proper keywords.</p>
+                </a>
+
+                <!-- Log Formatter Card -->
+                <a href="./log-format.html"
+                    class="group block p-6 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all hover:border-primary-500 dark:hover:border-primary-500">
+                    <div class="flex items-center gap-4 mb-4">
+                        <span
+                            class="w-12 h-12 flex items-center justify-center rounded-lg bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-400 text-2xl">
+                            <i class="fa-solid fa-scroll"></i>
+                        </span>
+                        <h3
+                            class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400">
+                            Log Formatter</h3>
+                    </div>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm">Align log timestamps for easier reading.</p>
+                </a>
+
+                <!-- UUID Generator Card -->
+                <a href="./uuid-generator.html"
+                    class="group block p-6 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all hover:border-primary-500 dark:hover:border-primary-500">
+                    <div class="flex items-center gap-4 mb-4">
+                        <span
+                            class="w-12 h-12 flex items-center justify-center rounded-lg bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 text-2xl">
+                            <i class="fa-solid fa-fingerprint"></i>
+                        </span>
+                        <h3
+                            class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400">
+                            UUID Generator</h3>
+                    </div>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm">Generate random UUID v4 identifiers.</p>
+                </a>
+
+                <!-- Slug Generator Card -->
+                <a href="./slug-generator.html"
+                    class="group block p-6 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all hover:border-primary-500 dark:hover:border-primary-500">
+                    <div class="flex items-center gap-4 mb-4">
+                        <span
+                            class="w-12 h-12 flex items-center justify-center rounded-lg bg-emerald-100 text-emerald-600 dark:bg-emerald-900/30 dark:text-emerald-400 text-2xl">
+                            <i class="fa-solid fa-link"></i>
+                        </span>
+                        <h3
+                            class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400">
+                            Slug Generator</h3>
+                    </div>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm">Convert text to URL-friendly slugs.</p>
+                </a>
+
+                <!-- Lorem Ipsum Generator Card -->
+                <a href="./lorem-ipsum.html"
+                    class="group block p-6 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all hover:border-primary-500 dark:hover:border-primary-500">
+                    <div class="flex items-center gap-4 mb-4">
+                        <span
+                            class="w-12 h-12 flex items-center justify-center rounded-lg bg-purple-100 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400 text-2xl">
+                            <i class="fa-solid fa-paragraph"></i>
+                        </span>
+                        <h3
+                            class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400">
+                            Lorem Ipsum</h3>
+                    </div>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm">Generate placeholder text for designs.</p>
+                </a>
+
+                <!-- Random Text Generator Card -->
+                <a href="./random-text.html"
+                    class="group block p-6 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all hover:border-primary-500 dark:hover:border-primary-500">
+                    <div class="flex items-center gap-4 mb-4">
+                        <span
+                            class="w-12 h-12 flex items-center justify-center rounded-lg bg-orange-100 text-orange-600 dark:bg-orange-900/30 dark:text-orange-400 text-2xl">
+                            <i class="fa-solid fa-shuffle"></i>
+                        </span>
+                        <h3
+                            class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400">
+                            Random Text</h3>
+                    </div>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm">Create random strings for passwords and
+                        tokens.</p>
+                </a>
+
+                <!-- Meta Title Checker Card -->
+                <a href="./meta-title-checker.html"
+                    class="group block p-6 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all hover:border-primary-500 dark:hover:border-primary-500">
+                    <div class="flex items-center gap-4 mb-4">
+                        <span
+                            class="w-12 h-12 flex items-center justify-center rounded-lg bg-sky-100 text-sky-600 dark:bg-sky-900/30 dark:text-sky-400 text-2xl">
+                            <i class="fa-solid fa-heading"></i>
+                        </span>
+                        <h3
+                            class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400">
+                            Title Checker</h3>
+                    </div>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm">Check meta title length for SEO.</p>
+                </a>
+
+                <!-- Meta Description Checker Card -->
+                <a href="./meta-desc-checker.html"
+                    class="group block p-6 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all hover:border-primary-500 dark:hover:border-primary-500">
+                    <div class="flex items-center gap-4 mb-4">
+                        <span
+                            class="w-12 h-12 flex items-center justify-center rounded-lg bg-teal-100 text-teal-600 dark:bg-teal-900/30 dark:text-teal-400 text-2xl">
+                            <i class="fa-solid fa-align-left"></i>
+                        </span>
+                        <h3
+                            class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400">
+                            Description Checker</h3>
+                    </div>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm">Optimize meta description length.</p>
+                </a>
+
+                <!-- Keyword Extractor Card -->
+                <a href="./keyword-extractor.html"
+                    class="group block p-6 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all hover:border-primary-500 dark:hover:border-primary-500">
+                    <div class="flex items-center gap-4 mb-4">
+                        <span
+                            class="w-12 h-12 flex items-center justify-center rounded-lg bg-amber-100 text-amber-600 dark:bg-amber-900/30 dark:text-amber-400 text-2xl">
+                            <i class="fa-solid fa-key"></i>
+                        </span>
+                        <h3
+                            class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400">
+                            Keyword Extractor</h3>
+                    </div>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm">Extract keywords from text.</p>
+                </a>
+
+                <!-- Keyword Frequency Card -->
+                <a href="./keyword-frequency.html"
+                    class="group block p-6 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all hover:border-primary-500 dark:hover:border-primary-500">
+                    <div class="flex items-center gap-4 mb-4">
+                        <span
+                            class="w-12 h-12 flex items-center justify-center rounded-lg bg-rose-100 text-rose-600 dark:bg-rose-900/30 dark:text-rose-400 text-2xl">
+                            <i class="fa-solid fa-chart-bar"></i>
+                        </span>
+                        <h3
+                            class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400">
+                            Keyword Frequency</h3>
+                    </div>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm">Analyze keyword density.</p>
+                </a>
+
+                <!-- N-gram Generator Card -->
+                <a href="./ngram-generator.html"
+                    class="group block p-6 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all hover:border-primary-500 dark:hover:border-primary-500">
+                    <div class="flex items-center gap-4 mb-4">
+                        <span
+                            class="w-12 h-12 flex items-center justify-center rounded-lg bg-indigo-100 text-indigo-600 dark:bg-indigo-900/30 dark:text-indigo-400 text-2xl">
+                            <i class="fa-solid fa-link"></i>
+                        </span>
+                        <h3
+                            class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400">
+                            N-gram Generator</h3>
+                    </div>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm">Generate bigrams and trigrams.</p>
+                </a>
+
+                <!-- SERP Preview Card -->
+                <a href="./serp-preview.html"
+                    class="group block p-6 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all hover:border-primary-500 dark:hover:border-primary-500">
+                    <div class="flex items-center gap-4 mb-4">
+                        <span
+                            class="w-12 h-12 flex items-center justify-center rounded-lg bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400 text-2xl">
+                            <i class="fa-brands fa-google"></i>
+                        </span>
+                        <h3
+                            class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400">
+                            SERP Preview</h3>
+                    </div>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm">Preview Google search results.</p>
+                </a>
+
+                <!-- Heading Analyzer Card -->
+                <a href="./heading-analyzer.html"
+                    class="group block p-6 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all hover:border-primary-500 dark:hover:border-primary-500">
+                    <div class="flex items-center gap-4 mb-4">
+                        <span
+                            class="w-12 h-12 flex items-center justify-center rounded-lg bg-yellow-100 text-yellow-600 dark:bg-yellow-900/30 dark:text-yellow-400 text-2xl">
+                            <i class="fa-solid fa-list-ol"></i>
+                        </span>
+                        <h3
+                            class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400">
+                            Heading Analyzer</h3>
+                    </div>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm">Check H1-H6 structure.</p>
+                </a>
+
+                <!-- Content Score Card -->
+                <a href="./content-score.html"
+                    class="group block p-6 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all hover:border-primary-500 dark:hover:border-primary-500">
+                    <div class="flex items-center gap-4 mb-4">
+                        <span
+                            class="w-12 h-12 flex items-center justify-center rounded-lg bg-fuchsia-100 text-fuchsia-600 dark:bg-fuchsia-900/30 dark:text-fuchsia-400 text-2xl">
+                            <i class="fa-solid fa-trophy"></i>
+                        </span>
+                        <h3
+                            class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400">
+                            Content Score</h3>
+                    </div>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm">Evaluate content quality for SEO.</p>
+                </a>
+
+                <!-- Readability Checker Card -->
+                <a href="./readability-checker.html"
+                    class="group block p-6 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all hover:border-primary-500 dark:hover:border-primary-500">
+                    <div class="flex items-center gap-4 mb-4">
+                        <span
+                            class="w-12 h-12 flex items-center justify-center rounded-lg bg-cyan-100 text-cyan-600 dark:bg-cyan-900/30 dark:text-cyan-400 text-2xl">
+                            <i class="fa-solid fa-book-open"></i>
+                        </span>
+                        <h3
+                            class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400">
+                            Readability Checker</h3>
+                    </div>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm">Calculate Flesch reading ease.</p>
+                </a>
+
+                <!-- Digital Clock Card -->
+                <a href="./clock.html"
+                    class="group block p-6 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all hover:border-primary-500 dark:hover:border-primary-500">
+                    <div class="flex items-center gap-4 mb-4">
+                        <span
+                            class="w-12 h-12 flex items-center justify-center rounded-lg bg-indigo-100 text-indigo-600 dark:bg-indigo-900/30 dark:text-indigo-400 text-2xl">
+                            <i class="fa-solid fa-clock"></i>
+                        </span>
+                        <h3
+                            class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400">
+                            Digital Clock</h3>
+                    </div>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm">Beautiful full-screen clock with real-time
+                        display.</p>
+                </a>
+
+            </div>
+        </section>
+
+        <section class="mt-20">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white mb-4">Why use our tools?</h2>
+                <p class="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">All processing happens in your
+                    browser. Your data stays on your device, always.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div
+                    class="flex flex-col items-center text-center p-6 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700">
+                    <div
+                        class="w-16 h-16 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-4 text-2xl">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900 dark:text-white">Instant Results</h3>
+                    <p class="text-slate-600 dark:text-slate-400">No server roundtrips means zero latency. Get results
+                        instantly as you type with real-time processing.</p>
+                </div>
+                <div
+                    class="flex flex-col items-center text-center p-6 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700">
+                    <div
+                        class="w-16 h-16 rounded-full bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 flex items-center justify-center mb-4 text-2xl">
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900 dark:text-white">Secure & Private</h3>
+                    <p class="text-slate-600 dark:text-slate-400">Your data never leaves your browser. Everything runs
+                        client-side – we can't see your text even if we wanted to.</p>
+                </div>
+                <div
+                    class="flex flex-col items-center text-center p-6 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700">
+                    <div
+                        class="w-16 h-16 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 flex items-center justify-center mb-4 text-2xl">
+                        <i class="fa-solid fa-wallet"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900 dark:text-white">100% Free Forever</h3>
+                    <p class="text-slate-600 dark:text-slate-400">No subscriptions, no hidden fees, no sign-ups. All 56+
+                        tools are completely free to use without limits.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <div id="app-footer"></div>
+
+    <script type="module" src="./js/app.js?v=4"></script>
+</body>
+
+</html>

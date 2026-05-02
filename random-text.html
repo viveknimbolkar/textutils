@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Text Generator Online - Random Strings Free</title>
+    <meta name="robots" content="index, follow">
+    <meta name="description"
+        content="Free online random text generator. Create random strings with custom length and character sets. Perfect for passwords and tokens.">
+    <link rel="canonical" href="https://viveknimbolkar.github.io/textutils/random-text.html" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: { 50: '#f0f9ff', 600: '#0284c7' } }, fontFamily: { sans: ['Inter', 'sans-serif'] } } } }</script>
+    <style type="text/tailwindcss">
+        @layer base { body { @apply antialiased text-slate-900 dark:text-slate-100 bg-slate-50 dark:bg-slate-900; } }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="bg-slate-50 dark:bg-slate-900 min-h-screen flex flex-col" data-tool="random-text">
+    <div id="app-header"></div>
+    <main class="flex-grow container mx-auto px-4 py-8">
+        <nav class="flex mb-4 text-sm text-slate-500">
+            <ol class="flex items-center space-x-2">
+                <li><a href="./" class="hover:text-primary-600">Home</a></li>
+                <li><i class="fa-solid fa-chevron-right text-xs"></i></li>
+                <li><span class="text-slate-900 dark:text-slate-200">Random Text Generator</span></li>
+            </ol>
+        </nav>
+        <h1 class="text-3xl font-extrabold text-slate-900 dark:text-white mb-6">Random Text Generator</h1>
+        <div class="grid lg:grid-cols-3 gap-8">
+            <div class="lg:col-span-2 space-y-6">
+                <div
+                    class="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-6">
+                    <div id="dynamic-controls" class="mb-4"></div>
+                    <div class="flex justify-between items-center mb-2"><label
+                            class="block text-sm font-bold text-slate-700 dark:text-slate-300">Generated
+                            Text</label><button id="copy-result"
+                            class="text-primary-600 hover:text-primary-700 text-sm font-bold"><i
+                                class="fa-regular fa-copy"></i> Copy</button></div>
+                    <textarea id="output-text"
+                        class="w-full h-32 p-3 text-sm bg-slate-100 dark:bg-slate-950 border border-slate-300 dark:border-slate-600 rounded-lg font-mono resize-none break-all"
+                        readonly></textarea>
+                </div>
+            </div>
+            <div class="lg:col-span-1 space-y-6">
+                <div
+                    class="bg-orange-50 dark:bg-orange-900/20 p-6 rounded-xl border border-orange-100 dark:border-orange-800">
+                    <h3 class="font-bold text-orange-900 dark:text-orange-300 mb-2">Cryptographically Secure</h3>
+                    <p class="text-sm text-orange-800 dark:text-orange-200">Uses Web Crypto API for truly random
+                        generation, suitable for security tokens and passwords.</p>
+                </div>
+            </div>
+        </div>
+
+        <article class="mt-16 prose dark:prose-invert max-w-none">
+            <h2>Free Random String Generator</h2>
+            <p>Generate random characters, numbers, and symbols. Create secure passwords, API keys, or test data strings
+                instantly.</p>
+        </article>
+
+        <!-- SEO Content -->
+        <section class="max-w-5xl mx-auto mt-16 mb-12">
+
+            <!-- Features Grid -->
+            <div class="grid md:grid-cols-3 gap-6 mb-12">
+                <div
+                    class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
+                    <div
+                        class="w-10 h-10 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 rounded-lg flex items-center justify-center mb-4 text-xl">
+                        <i class="fa-solid fa-sliders"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900 dark:text-white">Custom Charsets</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Toggle Uppercase, Lowercase, Numbers, or Symbols
+                        to match your specific requirements.</p>
+                </div>
+                <div
+                    class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
+                    <div
+                        class="w-10 h-10 bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 rounded-lg flex items-center justify-center mb-4 text-xl">
+                        <i class="fa-solid fa-shield-cat"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900 dark:text-white">Secure Passwords</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Generate high-entropy strings that are impossible
+                        to brute-force.</p>
+                </div>
+                <div
+                    class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
+                    <div
+                        class="w-10 h-10 bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 rounded-lg flex items-center justify-center mb-4 text-xl">
+                        <i class="fa-solid fa-ban"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900 dark:text-white">No Ambiguity</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Optionally exclude confusing characters like 'I',
+                        'l', '1', 'O', '0' for readability.</p>
+                </div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12 items-start">
+
+                <!-- About & Benefits -->
+                <div class="prose dark:prose-invert">
+                    <h2
+                        class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-600 dark:from-white dark:to-slate-400 mb-6">
+                        Random Data Utilities</h2>
+                    <p class="text-slate-600 dark:text-slate-400">
+                        Whether you need a one-time secret key or a batch of test strings, our random generator uses
+                        cryptographically strong algorithms for true randomness.
+                    </p>
+                    <ul class="space-y-4 marker:text-orange-500">
+                        <li>
+                            <strong class="text-slate-900 dark:text-white">API Keys</strong>
+                            <p class="text-xs text-slate-500 m-0">Create 32-character alphanumeric tokens for your
+                                application authentication.</p>
+                        </li>
+                        <li>
+                            <strong class="text-slate-900 dark:text-white">Testing Edge Cases</strong>
+                            <p class="text-xs text-slate-500 m-0">Generate strings with special characters to test input
+                                validation fields.</p>
+                        </li>
+                        <li>
+                            <strong class="text-slate-900 dark:text-white">WiFi Passwords</strong>
+                            <p class="text-xs text-slate-500 m-0">Create strong, hack-proof passwords that are still
+                                typeable.</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Styled How-To Guide -->
+                <div
+                    class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-8 border border-slate-100 dark:border-slate-800">
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
+                        <i class="fa-solid fa-list-check text-orange-500"></i> How to Generate
+                    </h3>
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-white dark:bg-slate-800 border-2 border-orange-500 text-orange-600 dark:text-orange-400 font-bold flex items-center justify-center text-sm shadow-sm">
+                                1</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-white text-sm">Set Options</h4>
+                                <p class="text-sm text-slate-500 mt-1">Select which characters to include (A-Z, a-z,
+                                    0-9, @#$).</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 text-slate-500 font-bold flex items-center justify-center text-sm shadow-sm">
+                                2</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-white text-sm">Length</h4>
+                                <p class="text-sm text-slate-500 mt-1">Choose the length of your string (e.g., 16
+                                    characters).</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 text-slate-500 font-bold flex items-center justify-center text-sm shadow-sm">
+                                3</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-white text-sm">Copy</h4>
+                                <p class="text-sm text-slate-500 mt-1">Click the button to copy your new secure string.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+    <div id="app-footer"></div>
+    <script type="module" src="./js/app.js?v=5"></script>
+    <script type="module" src="./js/modules/generator-tools.js"></script>
+</body>
+
+</html>

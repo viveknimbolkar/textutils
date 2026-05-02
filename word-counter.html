@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Counter - Free Online Character & Word Count Tool</title>
+    <meta name="robots" content="index, follow">
+    <meta name="description"
+        content="Free advanced online word counter. Get character count, sentence count, reading time, keyword density, and text entropy analysis instantly.">
+    <link rel="canonical" href="https://viveknimbolkar.github.io/textutils/word-counter.html" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://viveknimbolkar.github.io/textutils/word-counter.html">
+    <meta property="og:title" content="Advanced Word Counter - TextUtils">
+    <meta property="og:description" content="Instant word, character, and sentence counting with density analysis.">
+    <meta property="og:image" content="https://viveknimbolkar.github.io/textutils/assets/images/og-word.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Advanced Word Counter - TextUtils">
+    <meta property="twitter:description"
+        content="Instant word, character, and sentence counting with density analysis.">
+    <meta property="twitter:image" content="https://viveknimbolkar.github.io/textutils/assets/images/og-word.jpg">
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { 50: '#f0f9ff', 100: '#e0f2fe', 200: '#bae6fd', 300: '#7dd3fc', 400: '#38bdf8', 500: '#0ea5e9', 600: '#0284c7', 700: '#0369a1', 800: '#075985', 900: '#0c4a6e' },
+                        dark: { bg: '#0f172a', surface: '#1e293b', border: '#334155' }
+                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer base { body { @apply antialiased text-slate-900 dark:text-slate-100 bg-slate-50 dark:bg-dark-bg; } }
+        .btn-primary { @apply px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-lg transition-colors font-medium shadow-sm hover:shadow-md; }
+        .stat-card { @apply p-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 text-center; }
+        .stat-value { @apply text-2xl font-bold text-slate-900 dark:text-white; }
+        .stat-label { @apply text-xs text-slate-500 uppercase tracking-wide font-semibold mt-1; }
+    </style>
+    <!-- FA -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="bg-slate-50 dark:bg-slate-900 min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <div id="app-header"></div>
+
+    <main class="flex-grow container mx-auto px-4 py-8">
+
+        <nav class="flex mb-4 text-sm text-slate-500">
+            <ol class="flex items-center space-x-2">
+                <li><a href="./" class="hover:text-primary-600">Home</a></li>
+                <li><i class="fa-solid fa-chevron-right text-xs"></i></li>
+                <li><span class="text-slate-900 dark:text-slate-200">Word Counter</span></li>
+            </ol>
+        </nav>
+
+        <div class="grid lg:grid-cols-3 gap-8">
+
+            <!-- Left Column: Input and Basic Stats -->
+            <div class="lg:col-span-2 space-y-6">
+                <div class="flex items-center gap-3">
+                    <h1 class="text-3xl font-extrabold text-slate-900 dark:text-white">Word Counter</h1>
+                    <span class="px-2 py-1 bg-primary-100 text-primary-700 rounded text-xs font-bold">PRO FREE</span>
+                </div>
+
+                <div
+                    class="p-4 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700">
+                    <textarea id="text-input"
+                        class="w-full h-80 p-4 text-slate-900 dark:text-slate-100 bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-primary-500 font-mono resize-y"
+                        placeholder="Type or paste your text here (processed locally)..."></textarea>
+
+                    <div class="flex justify-between items-center mt-4">
+                        <button id="clear-btn"
+                            class="text-sm text-red-600 hover:text-red-700 font-medium flex items-center gap-2">
+                            <i class="fa-solid fa-trash-can"></i> Clear
+                        </button>
+                        <button id="copy-btn" class="btn-primary text-sm flex items-center gap-2">
+                            <i class="fa-regular fa-copy"></i> Copy Text
+                        </button>
+                    </div>
+                </div>
+
+                <!-- CATEGORY 1: GENERAL STATS -->
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white mt-8 mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-chart-simple text-primary-500"></i> General Statistics
+                </h3>
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                    <div class="stat-card border-b-4 border-b-primary-500">
+                        <div id="stat-words" class="stat-value text-primary-600 dark:text-primary-400">0</div>
+                        <div class="stat-label">Words</div>
+                    </div>
+                    <div class="stat-card">
+                        <div id="stat-chars" class="stat-value">0</div>
+                        <div class="stat-label">Characters</div>
+                    </div>
+                    <div class="stat-card">
+                        <div id="stat-chars-no-space" class="stat-value">0</div>
+                        <div class="stat-label">Chars (No Space)</div>
+                    </div>
+                    <div class="stat-card">
+                        <div id="stat-sentences" class="stat-value">0</div>
+                        <div class="stat-label">Sentences</div>
+                    </div>
+                    <div class="stat-card">
+                        <div id="stat-paragraphs" class="stat-value">0</div>
+                        <div class="stat-label">Paragraphs</div>
+                    </div>
+                    <div class="stat-card">
+                        <div id="stat-lines" class="stat-value">0</div>
+                        <div class="stat-label">Lines</div>
+                    </div>
+                </div>
+
+                <!-- CATEGORY 2: VOCABULARY & ANALYSIS -->
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white mt-8 mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-brain text-purple-500"></i> Vocabulary Analysis
+                </h3>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                    <div class="stat-card">
+                        <div id="stat-unique" class="stat-value text-lg">0</div>
+                        <div class="stat-label">Unique Words</div>
+                    </div>
+                    <div class="stat-card">
+                        <div id="stat-repeated" class="stat-value text-lg">0</div>
+                        <div class="stat-label">Repeated</div>
+                    </div>
+                    <div class="stat-card">
+                        <div id="stat-diversity" class="stat-value text-lg">0%</div>
+                        <div class="stat-label">Lexical Diversity</div>
+                    </div>
+                    <div class="stat-card">
+                        <div id="stat-entropy" class="stat-value text-lg">0</div>
+                        <div class="stat-label">Text Entropy</div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-4">
+                    <div class="stat-card">
+                        <div id="stat-longest" class="text-lg font-mono text-slate-700 dark:text-slate-300 truncate">-
+                        </div>
+                        <div class="stat-label">Longest Word</div>
+                    </div>
+                    <div class="stat-card">
+                        <div id="stat-shortest" class="text-lg font-mono text-slate-700 dark:text-slate-300 truncate">-
+                        </div>
+                        <div class="stat-label">Shortest Word</div>
+                    </div>
+                    <div class="stat-card">
+                        <div id="stat-avg-len" class="stat-value text-lg">0</div>
+                        <div class="stat-label">Avg Word Length</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Right Column: Time & Density -->
+            <div class="space-y-6">
+
+                <!-- Time Metrics -->
+                <div class="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-6">
+                    <h3 class="font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+                        <i class="fa-regular fa-clock text-green-500"></i> Time Estimation
+                    </h3>
+                    <div class="space-y-4">
+                        <div
+                            class="flex justify-between items-center border-b border-slate-100 dark:border-slate-700 pb-2">
+                            <span class="text-sm text-slate-500">Reading Time</span>
+                            <span id="stat-read-time" class="font-bold text-slate-900 dark:text-white">0 min</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-slate-500">Speaking Time</span>
+                            <span id="stat-speak-time" class="font-bold text-slate-900 dark:text-white">0 min</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Keyword Density -->
+                <div class="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-6">
+                    <h3 class="font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-key text-yellow-500"></i> Keyword Density
+                    </h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm text-left">
+                            <thead class="text-xs text-slate-500 uppercase bg-slate-50 dark:bg-slate-900/50">
+                                <tr>
+                                    <th class="py-2">Word</th>
+                                    <th class="py-2 text-right">Count</th>
+                                    <th class="py-2 text-right">%</th>
+                                    <th class="py-2"></th>
+                                </tr>
+                            </thead>
+                            <tbody id="density-table-body">
+                                <!-- JS Injected Rows -->
+                            </tbody>
+                        </table>
+                        <p class="text-xs text-slate-400 mt-4 text-center">* Using Common English Stop Words Filter</p>
+                    </div>
+                </div>
+
+                <!-- SEO Content Removed from here -->
+            </div>
+
+        </div>
+
+        <!-- SEO Content (Full Width) -->
+        <section class="max-w-5xl mx-auto mt-20 mb-12">
+
+            <!-- Features Grid -->
+            <div class="grid md:grid-cols-3 gap-6 mb-12">
+                <div
+                    class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
+                    <div
+                        class="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-lg flex items-center justify-center mb-4 text-xl">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900 dark:text-white">Real-Time Analysis</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Get instant feedback on word count, characters,
+                        and sentences as you type. No waiting, no loading.</p>
+                </div>
+                <div
+                    class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
+                    <div
+                        class="w-10 h-10 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 rounded-lg flex items-center justify-center mb-4 text-xl">
+                        <i class="fa-solid fa-chart-pie"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900 dark:text-white">Keyword Density</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Identify overused words to improve your writing
+                        style and optimize content for SEO.</p>
+                </div>
+                <div
+                    class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
+                    <div
+                        class="w-10 h-10 bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 rounded-lg flex items-center justify-center mb-4 text-xl">
+                        <i class="fa-solid fa-clock"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900 dark:text-white">Reading Time</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Accurate estimation of reading and speaking time
+                        based on average processing speeds.</p>
+                </div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12 items-start">
+
+                <!-- Left Column: About & Technical Details -->
+                <div class="prose dark:prose-invert">
+                    <section class="mb-12">
+                        <h2
+                            class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-600 dark:from-white dark:to-slate-400 mb-6">
+                            Why use specific word counts?</h2>
+                        <p class="text-slate-600 dark:text-slate-400">
+                            Writing with precision is clearer and more impactful. Certain platforms also enforce strict
+                            limits:
+                        </p>
+                        <ul class="space-y-2 marker:text-primary-500">
+                            <li><strong>Social Media:</strong> Twitter/X (280 chars), LinkedIn posts.</li>
+                            <li><strong>SEO & Blogging:</strong> Long-form content (1,500+ words) usually ranks better.
+                            </li>
+                            <li><strong>Ad Copy:</strong> Google Ads headlines have strict character limits.</li>
+                            <li><strong>Academia:</strong> Essays often require a minimum word count.</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2
+                            class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 mb-6">
+                            Technical Details</h2>
+
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Counting Logic</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm">
+                            Words are typically delimited by spaces, newlines, and punctuation. Our algorithm filters
+                            out
+                            empty strings that can occur from multiple spaces to ensure an accurate count.
+                        </p>
+
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white mt-6 mb-2">Reading Time</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm">
+                            Calculated based on the average reading speed of an adult, which is approximately **225
+                            words per minute** (wpm).
+                            Speaking time is calculated at a slower rate, typically **130 wpm**.
+                        </p>
+
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white mt-6 mb-2">Character Byte Size</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm">
+                            In modern UTF-8 encoding, a character isn't always 1 byte. Standard ASCII characters (A-Z)
+                            are 1 byte,
+                            but emojis and some symbols can be up to 4 bytes. This distinction is crucial for database
+                            storage limits.
+                        </p>
+                    </section>
+                </div>
+
+                <!-- Styled How-To Guide -->
+                <div
+                    class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-8 border border-slate-100 dark:border-slate-800">
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
+                        <i class="fa-solid fa-list-check text-primary-500"></i> How to use
+                    </h3>
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-white dark:bg-slate-800 border-2 border-primary-500 text-primary-600 dark:text-primary-400 font-bold flex items-center justify-center text-sm shadow-sm">
+                                1</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-white text-sm">Enter your text</h4>
+                                <p class="text-sm text-slate-500 mt-1">Type directly or paste your document into the
+                                    large input area.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 text-slate-500 font-bold flex items-center justify-center text-sm shadow-sm">
+                                2</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-white text-sm">Check the metrics</h4>
+                                <p class="text-sm text-slate-500 mt-1">The dashboard at the top updates instantly with
+                                    Word, Char, and Sentence counts.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 text-slate-500 font-bold flex items-center justify-center text-sm shadow-sm">
+                                3</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-white text-sm">Review keywords</h4>
+                                <p class="text-sm text-slate-500 mt-1">Look at the "Keyword Density" panel to see which
+                                    words you are using most.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <div id="app-footer"></div>
+
+    <script type="module" src="./js/app.js?v=4"></script>
+    <script type="module" src="./js/modules/word-counter.js"></script>
+</body>
+
+</html>

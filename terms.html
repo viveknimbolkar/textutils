@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - Universal Text Processing</title>
+    <meta name="robots" content="index, follow">
+    <meta name="description" content="Terms of Service for Universal Text Processing.">
+    <link rel="canonical" href="https://viveknimbolkar.github.io/textutils/terms.html" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Terms of Service - TextUtils">
+    <meta property="og:description" content="Terms and conditions for using TextUtils.">
+
+    <!-- Tailwind & FA -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: { 500: '#0ea5e9', 600: '#0284c7' }, dark: { bg: '#0f172a' } } } } }
+    </script>
+    <style type="text/tailwindcss">
+        @layer base { body { @apply antialiased text-slate-900 dark:text-slate-100 bg-slate-50 dark:bg-dark-bg; } }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="bg-slate-50 dark:bg-slate-900 min-h-screen flex flex-col">
+
+    <header
+        class="sticky top-0 z-50 w-full border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur">
+        <div class="container mx-auto px-4 h-16 flex items-center justify-between">
+            <a href="./" class="flex items-center space-x-2 font-bold text-xl text-slate-900 dark:text-white">
+                <i class="fa-solid fa-screwdriver-wrench text-primary-600"></i>
+                <span class="hidden sm:inline-block">TextUtils</span>
+            </a>
+            <nav class="flex items-center gap-4">
+                <a href="./" class="text-sm font-medium hover:text-primary-600">Home</a>
+                <button id="theme-toggle" class="p-2 text-slate-500 rounded-lg dark:text-slate-400">
+                    <i class="fa-solid fa-circle-half-stroke"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow container mx-auto px-4 py-8 max-w-3xl">
+        <h1 class="text-4xl font-extrabold text-slate-900 dark:text-white mb-8">Terms of Service</h1>
+
+        <article class="prose dark:prose-invert max-w-none">
+            <p><strong>1. Acceptance</strong><br>By using TextUtils, you agree to these terms.</p>
+            <p><strong>2. Usage</strong><br>Our tools are free for personal and commercial use. You agree not to abuse
+                the service via automated scripts.</p>
+            <p><strong>3. Disclaimer</strong><br>The tools are provided "as is". We are not liable for any inaccuracies
+                in processing results.</p>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <div id="app-footer"></div>
+
+    <script type="module" src="./js/app.js?v=4"></script>
+</body>
+
+</html>

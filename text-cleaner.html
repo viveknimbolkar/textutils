@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Cleaner & Normalization - Remove Spaces, Emojis, & HTML Tags</title>
+    <meta name="robots" content="index, follow">
+    <meta name="description"
+        content="Free online text cleaner. Remove extra spaces, emojis, html tags, duplicate lines and normalize unicode characters instantly.">
+    <link rel="canonical" href="https://viveknimbolkar.github.io/textutils/text-cleaner.html" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://viveknimbolkar.github.io/textutils/text-cleaner.html">
+    <meta property="og:title" content="Text Cleaner - TextUtils">
+    <meta property="og:description"
+        content="Clean and normalize text instantly. Remove spaces, lines, and bad characters.">
+    <meta property="og:image" content="https://viveknimbolkar.github.io/textutils/assets/images/og-cleaner.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Text Cleaner - TextUtils">
+    <meta property="twitter:description" content="Clean and normalize text instantly.">
+    <meta property="twitter:image" content="https://viveknimbolkar.github.io/textutils/assets/images/og-cleaner.jpg">
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { 50: '#f0f9ff', 100: '#e0f2fe', 200: '#bae6fd', 300: '#7dd3fc', 400: '#38bdf8', 500: '#0ea5e9', 600: '#0284c7', 700: '#0369a1', 800: '#075985', 900: '#0c4a6e' },
+                        dark: { bg: '#0f172a', surface: '#1e293b', border: '#334155' }
+                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer base { body { @apply antialiased text-slate-900 dark:text-slate-100 bg-slate-50 dark:bg-dark-bg; } }
+        .btn-primary { @apply px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-lg transition-colors font-medium shadow-sm hover:shadow-md; }
+        .btn-action { @apply px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700 text-sm font-medium transition-colors flex items-center justify-center gap-2; }
+        .section-title { @apply text-xs font-bold text-slate-500 uppercase tracking-wide mb-3 mt-6 first:mt-0; }
+    </style>
+    <!-- FA -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Preload -->
+    <link rel="preload" href="./js/app.js" as="script">
+</head>
+
+<body class="bg-slate-50 dark:bg-slate-900 min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <div id="app-header"></div>
+
+    <main class="flex-grow container mx-auto px-4 py-8">
+        <nav class="flex mb-4 text-sm text-slate-500">
+            <ol class="flex items-center space-x-2">
+                <li><a href="./">Home</a></li>
+                <li><i class="fa-solid fa-chevron-right text-xs"></i></li>
+                <li><span class="text-slate-900 dark:text-slate-200">Text Cleaner</span></li>
+            </ol>
+        </nav>
+
+        <div class="grid lg:grid-cols-3 gap-8">
+            <!-- Left: Inputs -->
+            <div class="lg:col-span-2 space-y-6">
+                <h1 class="text-3xl font-extrabold text-slate-900 dark:text-white">Text Cleaner & Normalization</h1>
+                <p class="text-slate-600 dark:text-slate-400">Clean up messy text, remove spaces, and normalize
+                    formatting instantly.</p>
+
+                <div
+                    class="p-4 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700">
+                    <textarea id="text-input"
+                        class="w-full h-80 p-4 text-slate-900 dark:text-slate-100 bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-primary-500 font-mono"
+                        placeholder="Paste text to clean..."></textarea>
+
+                    <div
+                        class="flex flex-wrap justify-between items-center mt-4 pt-4 border-t border-slate-100 dark:border-slate-700 gap-3">
+                        <div class="flex gap-2">
+                            <button id="clear-btn"
+                                class="text-sm text-red-600 hover:text-red-700 font-medium px-3 py-1"><i
+                                    class="fa-solid fa-trash-can"></i> Clear</button>
+                            <button id="undo-btn"
+                                class="text-sm text-slate-600 dark:text-slate-400 hover:text-slate-900 font-medium px-3 py-1"><i
+                                    class="fa-solid fa-rotate-left"></i> Undo</button>
+                        </div>
+                        <div class="flex gap-3">
+                            <button id="download-btn"
+                                class="px-4 py-2 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 text-slate-700 dark:text-white rounded-lg text-sm font-medium transition-colors flex items-center gap-2">
+                                <i class="fa-solid fa-download"></i> Download
+                            </button>
+                            <button id="copy-btn"
+                                class="px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-lg text-sm font-medium transition-colors shadow-sm hover:shadow-md flex items-center gap-2">
+                                <i class="fa-regular fa-copy"></i> Copy Result
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Actions -->
+            <div class="space-y-6">
+                <div class="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-6">
+
+                    <h3 class="section-title">Whitespace</h3>
+                    <div class="grid grid-cols-1 gap-2">
+                        <button class="btn-action" data-action="trim">Trim Leading/Trailing</button>
+                        <button class="btn-action" data-action="remove-extra-spaces">Remove Extra Spaces</button>
+                        <button class="btn-action" data-action="remove-tabs">Remove Tabs</button>
+                        <button class="btn-action" data-action="normalize-whitespace">Normalize Whitespace</button>
+                    </div>
+
+                    <h3 class="section-title">Lines</h3>
+                    <div class="grid grid-cols-1 gap-2">
+                        <button class="btn-action" data-action="remove-empty-lines">Remove Empty Lines</button>
+                        <button class="btn-action" data-action="remove-duplicate-lines">Remove Duplicate Lines</button>
+                        <button class="btn-action" data-action="normalize-line-endings">Normalize Endings (LF)</button>
+                    </div>
+
+                    <h3 class="section-title">Characters</h3>
+                    <div class="grid grid-cols-1 gap-2">
+                        <button class="btn-action" data-action="remove-emojis">Remove Emojis 🚫😀</button>
+                        <button class="btn-action" data-action="remove-punctuation">Remove Punctuation</button>
+                        <button class="btn-action" data-action="remove-special-chars">Remove Special Chars</button>
+                        <button class="btn-action" data-action="remove-zero-width">Remove Zero-Width</button>
+                    </div>
+
+                    <h3 class="section-title">Format & Web</h3>
+                    <div class="grid grid-cols-1 gap-2">
+                        <button class="btn-action" data-action="remove-html-tags">Remove HTML Tags</button>
+                        <button class="btn-action" data-action="decode-html-entities">Decode HTML Entities</button>
+                        <button class="btn-action" data-action="normalize-unicode">Normalize Unicode</button>
+                        <button class="btn-action" data-action="remove-non-printable">Remove Non-Printable</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <article class="mt-16 prose dark:prose-invert max-w-none">
+            <h2>Free Text Scrubbing Tool</h2>
+            <p>Automatically remove unwanted characters, fix whitespace issues, and normalize unicode text. Perfect for
+                cleaning up data before importing into Excel or databases.</p>
+        </article>
+
+        <!-- SEO Content -->
+        <section class="max-w-5xl mx-auto mt-16 mb-12">
+
+            <!-- Features Grid -->
+            <div class="grid md:grid-cols-3 gap-6 mb-12">
+                <div
+                    class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
+                    <div
+                        class="w-10 h-10 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 rounded-lg flex items-center justify-center mb-4 text-xl">
+                        <i class="fa-solid fa-broom"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900 dark:text-white">Deep Cleaning</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Remove unwanted characters, emojis, and symbols
+                        that clutter your data or text files.</p>
+                </div>
+                <div
+                    class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
+                    <div
+                        class="w-10 h-10 bg-cyan-100 dark:bg-cyan-900/30 text-cyan-600 dark:text-cyan-400 rounded-lg flex items-center justify-center mb-4 text-xl">
+                        <i class="fa-solid fa-eraser"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900 dark:text-white">Fix Whitespace</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Trim leading/trailing spaces and collapse multiple
+                        spaces (like tabs) into single spaces.</p>
+                </div>
+                <div
+                    class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
+                    <div
+                        class="w-10 h-10 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 rounded-lg flex items-center justify-center mb-4 text-xl">
+                        <i class="fa-solid fa-filter"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900 dark:text-white">Deduplicate</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Instantly remove duplicate lines to create a
+                        clean, unique list of items.</p>
+                </div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12 items-start">
+
+                <!-- About & Benefits -->
+                <div class="prose dark:prose-invert">
+                    <h2
+                        class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-600 dark:from-white dark:to-slate-400 mb-6">
+                        Automate Your Data Prep</h2>
+                    <p class="text-slate-600 dark:text-slate-400">
+                        Cleaning text manually is tedious and error-prone. Whether you are a developer sanitizing
+                        database inputs or a writer fixing copy-paste errors, this tool automates the process.
+                    </p>
+                    <ul class="space-y-4 marker:text-primary-500">
+                        <li>
+                            <strong class="text-slate-900 dark:text-white">Remove Emojis 🧹</strong>
+                            <p class="text-xs text-slate-500 m-0">Strip out special Unicode characters for legacy
+                                systems.</p>
+                        </li>
+                        <li>
+                            <strong class="text-slate-900 dark:text-white">Strip HTML Tags</strong>
+                            <p class="text-xs text-slate-500 m-0">Convert rich text or web content into plain text.</p>
+                        </li>
+                        <li>
+                            <strong class="text-slate-900 dark:text-white">Zero-Width Characters</strong>
+                            <p class="text-xs text-slate-500 m-0">Remove invisible characters that cause mysterious
+                                bugs.</p>
+                        </li>
+                        <li>
+                            <strong class="text-slate-900 dark:text-white">Social Media Cleanup</strong>
+                            <p class="text-xs text-slate-500 m-0">Remove all @mentions and #hashtags with one click.</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Styled How-To Guide -->
+                <div
+                    class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-8 border border-slate-100 dark:border-slate-800">
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
+                        <i class="fa-solid fa-list-check text-primary-500"></i> How to Clean Text
+                    </h3>
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-white dark:bg-slate-800 border-2 border-primary-500 text-primary-600 dark:text-primary-400 font-bold flex items-center justify-center text-sm shadow-sm">
+                                1</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-white text-sm">Paste Content</h4>
+                                <p class="text-sm text-slate-500 mt-1">Paste your messy text or list into the input box.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 text-slate-500 font-bold flex items-center justify-center text-sm shadow-sm">
+                                2</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-white text-sm">Select Filters</h4>
+                                <p class="text-sm text-slate-500 mt-1">Click individual buttons like "Remove Tabs" or
+                                    use the "Clean All" preset.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 text-slate-500 font-bold flex items-center justify-center text-sm shadow-sm">
+                                3</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-white text-sm">Copy Clean Text</h4>
+                                <p class="text-sm text-slate-500 mt-1">The cleaned text appears instantly. Click "Copy"
+                                    to use it.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <div id="app-footer"></div>
+
+    <script type="module" src="./js/app.js?v=4"></script>
+    <script type="module" src="./js/modules/text-cleaner.js"></script>
+</body>
+
+</html>

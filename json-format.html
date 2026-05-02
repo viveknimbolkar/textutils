@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Formatter Online - Prettify JSON Free</title>
+    <meta name="robots" content="index, follow">
+    <meta name="description"
+        content="Free online JSON formatter. Beautify and indent JSON data instantly. Client-side, secure, no data sent to servers.">
+    <link rel="canonical" href="https://viveknimbolkar.github.io/textutils/json-format.html" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: { 50: '#f0f9ff', 600: '#0284c7' } }, fontFamily: { sans: ['Inter', 'sans-serif'] } } } }
+    </script>
+    <style type="text/tailwindcss">
+        @layer base { body { @apply antialiased text-slate-900 dark:text-slate-100 bg-slate-50 dark:bg-slate-900; } }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="bg-slate-50 dark:bg-slate-900 min-h-screen flex flex-col" data-tool="json-format">
+    <div id="app-header"></div>
+    <main class="flex-grow container mx-auto px-4 py-8">
+        <nav class="flex mb-4 text-sm text-slate-500">
+            <ol class="flex items-center space-x-2">
+                <li><a href="./" class="hover:text-primary-600">Home</a></li>
+                <li><i class="fa-solid fa-chevron-right text-xs"></i></li>
+                <li><span class="text-slate-900 dark:text-slate-200">JSON Formatter</span></li>
+            </ol>
+        </nav>
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-10">
+                <h1 class="text-3xl font-extrabold text-slate-900 dark:text-white mb-4">JSON Formatter & Beautifier</h1>
+                <p class="text-lg text-slate-600 dark:text-slate-400">Prettify your minified JSON instantly. Syntax
+                    highlighting, error validation, and proper indentation online.</p>
+            </div>
+
+            <div
+                class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 p-6 mb-12">
+                <div id="dynamic-controls" class="mb-4"></div>
+                <div class="flex justify-between items-center mb-2">
+                    <label class="block text-sm font-bold text-slate-700 dark:text-slate-300">Input JSON</label>
+                    <div class="relative">
+                        <input type="file" id="file-upload" class="hidden" accept=".json,.txt">
+                        <button onclick="document.getElementById('file-upload').click()"
+                            class="text-xs text-primary-600 hover:text-primary-700 font-medium flex items-center gap-1">
+                            <i class="fa-solid fa-cloud-arrow-up"></i> Upload File
+                        </button>
+                    </div>
+                </div>
+                <textarea id="input-text"
+                    class="w-full h-64 p-4 text-sm bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-primary-600 font-mono resize-none mb-6 outline-none transition-all"
+                    placeholder='{"key": "value"}'></textarea>
+
+                <div class="flex flex-col md:flex-row justify-between items-center mb-2 gap-4">
+                    <label class="block text-sm font-bold text-slate-700 dark:text-slate-300">Formatted Output</label>
+                    <div class="flex gap-2">
+                        <button id="clear-all"
+                            class="text-xs text-red-500 hover:text-red-700 font-semibold px-3 py-1 rounded hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors">Clear</button>
+                        <button id="copy-result"
+                            class="text-primary-600 hover:text-primary-700 text-sm font-bold px-3 py-1 rounded hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors flex items-center gap-2">
+                            <i class="fa-regular fa-copy"></i> Copy
+                        </button>
+                        <button id="download-btn"
+                            class="text-primary-600 hover:text-primary-700 text-sm font-bold px-3 py-1 rounded hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors flex items-center gap-2">
+                            <i class="fa-solid fa-download"></i> Download
+                        </button>
+                    </div>
+                </div>
+                <textarea id="output-text"
+                    class="w-full h-96 p-4 text-sm bg-slate-100 dark:bg-slate-950 border border-slate-300 dark:border-slate-600 rounded-lg font-mono resize-none outline-none"
+                    readonly></textarea>
+            </div>
+        </div>
+
+        <article class="mt-16 prose dark:prose-invert max-w-none">
+            <h2>Free Online JSON Formatter</h2>
+            <p>Cleaning up minified JSON data is essential for debugging APIs and configuration files. Our formatter
+                automatically indents keys, arrays, and objects to make them readable.</p>
+        </article>
+
+        <!-- SEO Content -->
+        <section class="max-w-5xl mx-auto mt-16 mb-12">
+
+            <!-- Features Grid -->
+            <div class="grid md:grid-cols-3 gap-6 mb-12">
+                <div
+                    class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
+                    <div
+                        class="w-10 h-10 bg-cyan-100 dark:bg-cyan-900/30 text-cyan-600 dark:text-cyan-400 rounded-lg flex items-center justify-center mb-4 text-xl">
+                        <i class="fa-solid fa-indent"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900 dark:text-white">Smart Indent</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Automatically structures nested objects and arrays
+                        with clear 2-space or 4-space indentation.</p>
+                </div>
+                <div
+                    class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
+                    <div
+                        class="w-10 h-10 bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 rounded-lg flex items-center justify-center mb-4 text-xl">
+                        <i class="fa-solid fa-bug-slash"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900 dark:text-white">Syntax Check</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Validates your input before formatting. If there's
+                        an error (like a missing comma), we'll let you know.</p>
+                </div>
+                <div
+                    class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
+                    <div
+                        class="w-10 h-10 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 rounded-lg flex items-center justify-center mb-4 text-xl">
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900 dark:text-white">Secure</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Your data never leaves your browser. All
+                        formatting happens client-side securely.</p>
+                </div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12 items-start">
+
+                <!-- Left Column: About & Technical Details -->
+                <div class="prose dark:prose-invert">
+                    <section class="mb-12">
+                        <h2
+                            class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-600 dark:from-white dark:to-slate-400 mb-6">
+                            Why Format JSON?</h2>
+                        <p class="text-slate-600 dark:text-slate-400">
+                            JSON (JavaScript Object Notation) is often minified (compressed) to save bandwidth. While
+                            machines read this easily, humans struggle. Formatting restores the structure.
+                        </p>
+                        <ul class="space-y-4 marker:text-primary-500">
+                            <li>
+                                <strong class="text-slate-900 dark:text-white">API Debugging</strong>
+                                <p class="text-xs text-slate-500 m-0">Inspect complex API responses to verify fields.
+                                </p>
+                            </li>
+                            <li>
+                                <strong class="text-slate-900 dark:text-white">Config Files</strong>
+                                <p class="text-xs text-slate-500 m-0">Edit VS Code or server configs without breaking
+                                    syntax.</p>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2
+                            class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 mb-6">
+                            Technical Details</h2>
+
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">JSON Syntax</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm">
+                            JSON supports Objects `{}`, Arrays `[]`, Strings `""`, Numbers, Booleans, and Null. Keys
+                            must
+                            always be double-quoted strings unlike JavaScript objects. Not respecting this results in
+                            syntax errors.
+                        </p>
+
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white mt-6 mb-2">Validation vs. Parsing
+                        </h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm">
+                            Our tool performs a strict parse using the browser's native `JSON.parse()`. If this fails,
+                            the
+                            input is invalid and cannot be formatted. This is stricter than some loose evaluators but
+                            ensures correctness.
+                        </p>
+
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white mt-6 mb-2">Pretty Printing</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm">
+                            We use standard recursive logic to insert newlines and 2-space indentation depth for every
+                            nested
+                            Object or Array. This transforms a single-line string into a human-readable tree.
+                        </p>
+                    </section>
+                </div>
+
+                <!-- Styled How-To Guide -->
+                <div
+                    class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-8 border border-slate-100 dark:border-slate-800">
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
+                        <i class="fa-solid fa-list-check text-primary-500"></i> Easy Steps
+                    </h3>
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-white dark:bg-slate-800 border-2 border-primary-500 text-primary-600 dark:text-primary-400 font-bold flex items-center justify-center text-sm shadow-sm">
+                                1</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-white text-sm">Paste Data</h4>
+                                <p class="text-sm text-slate-500 mt-1">Paste your messy/minified JSON string.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 text-slate-500 font-bold flex items-center justify-center text-sm shadow-sm">
+                                2</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-white text-sm">Auto-Format</h4>
+                                <p class="text-sm text-slate-500 mt-1">The tool automatically detects and beautifies the
+                                    code.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 text-slate-500 font-bold flex items-center justify-center text-sm shadow-sm">
+                                3</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-white text-sm">Copy</h4>
+                                <p class="text-sm text-slate-500 mt-1">Grab the clean JSON for your project.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+    <div id="app-footer"></div>
+    <script type="module" src="./js/app.js?v=5"></script>
+    <script type="module" src="./js/modules/formatter-tools.js"></script>
+</body>
+
+</html>

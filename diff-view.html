@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Diff View - Compare Text Online Free</title>
+    <meta name="robots" content="index, follow">
+    <meta name="description"
+        content="Free online text diff viewer. Compare two texts and see additions, deletions, and changes highlighted. Perfect for code review.">
+    <link rel="canonical" href="https://viveknimbolkar.github.io/textutils/diff-view.html" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: { 50: '#f0f9ff', 100: '#e0f2fe', 600: '#0284c7', 700: '#0369a1' } }, fontFamily: { sans: ['Inter', 'sans-serif'] } } } }</script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="bg-slate-50 dark:bg-slate-900 min-h-screen flex flex-col" data-tool="diff-view">
+    <div id="app-header"></div>
+    <main class="flex-grow container mx-auto px-4 py-8">
+        <nav class="flex mb-4 text-sm text-slate-500">
+            <ol class="flex items-center space-x-2">
+                <li><a href="./" class="hover:text-primary-600">Home</a></li>
+                <li><i class="fa-solid fa-chevron-right text-xs"></i></li>
+                <li><span class="text-slate-900 dark:text-slate-200">Diff View</span></li>
+            </ol>
+        </nav>
+        <h1 class="text-3xl font-extrabold text-slate-900 dark:text-white mb-6">Text Diff View</h1>
+
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-10">
+                <h1 class="text-3xl font-extrabold text-slate-900 dark:text-white mb-4">Text Diff Checker</h1>
+                <p class="text-lg text-slate-600 dark:text-slate-400">Compare two text files side-by-side to highlight
+                    differences, additions, and deletions.</p>
+            </div>
+
+            <div
+                class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 p-6 mb-12">
+                <div class="grid md:grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Original
+                            Text</label>
+                        <textarea id="text-1" rows="12" placeholder="Paste original text here..."
+                            class="w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-mono text-sm resize-none focus:ring-2 focus:ring-primary-500"></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Modified
+                            Text</label>
+                        <textarea id="text-2" rows="12" placeholder="Paste modified text here..."
+                            class="w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-mono text-sm resize-none focus:ring-2 focus:ring-primary-500"></textarea>
+                    </div>
+                </div>
+                <div class="flex justify-center mb-6 pt-4 border-t border-slate-100 dark:border-slate-700">
+                    <button id="compare-btn"
+                        class="px-8 py-3 bg-primary-600 hover:bg-primary-700 text-white rounded-lg font-bold shadow-sm transition-all flex items-center gap-2">
+                        <i class="fa-solid fa-code-compare"></i> Compare Texts
+                    </button>
+                </div>
+                <div id="results-panel"
+                    class="bg-slate-50 dark:bg-slate-900 rounded-lg p-4 border border-slate-200 dark:border-slate-700 min-h-[100px] flex items-center justify-center">
+                    <p class="text-slate-500">Enter text in both panels to see the difference.</p>
+                </div>
+            </div>
+        </div>
+
+        <article class="mt-16 prose dark:prose-invert max-w-none">
+            <h2>Compare Text & Find Differences</h2>
+            <p>Our Diff Checker helps developers, writers, and editors instantly spot changes between two versions of a
+                document. It visualizes every added, deleted, or modified line.</p>
+        </article>
+
+        <!-- SEO Content -->
+        <section class="max-w-5xl mx-auto mt-16 mb-12">
+
+            <!-- Features Grid -->
+            <div class="grid md:grid-cols-3 gap-6 mb-12">
+                <div
+                    class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
+                    <div
+                        class="w-10 h-10 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 rounded-lg flex items-center justify-center mb-4 text-xl">
+                        <i class="fa-solid fa-file-circle-plus"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900 dark:text-white">Track Additions</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Green highlights clearly show new text that was
+                        added to the modified version.</p>
+                </div>
+                <div
+                    class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
+                    <div
+                        class="w-10 h-10 bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 rounded-lg flex items-center justify-center mb-4 text-xl">
+                        <i class="fa-solid fa-file-circle-minus"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900 dark:text-white">Spot Deletions</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Red highlights indicate text that was removed from
+                        the original document.</p>
+                </div>
+                <div
+                    class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
+                    <div
+                        class="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-lg flex items-center justify-center mb-4 text-xl">
+                        <i class="fa-solid fa-laptop-code"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900 dark:text-white">Code Friendly</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Perfect for reviewing code changes, config files,
+                        or JSON blobs.</p>
+                </div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12 items-start">
+
+                <!-- About & Benefits -->
+                <div class="prose dark:prose-invert">
+                    <h2
+                        class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-600 dark:from-white dark:to-slate-400 mb-6">
+                        Why Use a Diff Tool?</h2>
+                    <p class="text-slate-600 dark:text-slate-400">
+                        Manually checking for changes between two long documents is error-prone and tedious. A Diff
+                        Checker automates this by comparing content character-by-character or line-by-line.
+                    </p>
+                    <ul class="space-y-4 marker:text-primary-500">
+                        <li>
+                            <strong class="text-slate-900 dark:text-white">Code Reviews</strong>
+                            <p class="text-xs text-slate-500 m-0">Sanity check your code before committing changes to
+                                Git.</p>
+                        </li>
+                        <li>
+                            <strong class="text-slate-900 dark:text-white">Content Editing</strong>
+                            <p class="text-xs text-slate-500 m-0">See exactly what an editor changed in your draft
+                                article.</p>
+                        </li>
+                        <li>
+                            <strong class="text-slate-900 dark:text-white">List Comparison</strong>
+                            <p class="text-xs text-slate-500 m-0">Find missing items between two lists (e.g., email
+                                subscribers).</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Styled How-To Guide -->
+                <div
+                    class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-8 border border-slate-100 dark:border-slate-800">
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
+                        <i class="fa-solid fa-list-check text-primary-500"></i> How to Compare
+                    </h3>
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-white dark:bg-slate-800 border-2 border-primary-500 text-primary-600 dark:text-primary-400 font-bold flex items-center justify-center text-sm shadow-sm">
+                                1</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-white text-sm">Paste Originals</h4>
+                                <p class="text-sm text-slate-500 mt-1">Paste the original text in the left panel and the
+                                    new version in the right.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 text-slate-500 font-bold flex items-center justify-center text-sm shadow-sm">
+                                2</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-white text-sm">Run Compare</h4>
+                                <p class="text-sm text-slate-500 mt-1">Click the "Compare Texts" button.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 text-slate-500 font-bold flex items-center justify-center text-sm shadow-sm">
+                                3</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-white text-sm">Analyze</h4>
+                                <p class="text-sm text-slate-500 mt-1">Review the side-by-side view. Red lines are
+                                    removals, green lines are additions.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <div class="mt-6 bg-slate-100 dark:bg-slate-800 p-6 rounded-xl">
+            <h3 class="font-bold text-slate-900 dark:text-white mb-3">Related Tools</h3>
+            <div class="flex flex-wrap gap-3">
+                <a href="./side-compare.html"
+                    class="px-4 py-2 bg-white dark:bg-slate-700 rounded-lg text-primary-600 hover:bg-primary-50 dark:hover:bg-slate-600 text-sm font-medium">Side-by-side
+                    Compare</a>
+                <a href="./find-replace.html"
+                    class="px-4 py-2 bg-white dark:bg-slate-700 rounded-lg text-primary-600 hover:bg-primary-50 dark:hover:bg-slate-600 text-sm font-medium">Find
+                    & Replace</a>
+                <a href="./text-cleaner.html"
+                    class="px-4 py-2 bg-white dark:bg-slate-700 rounded-lg text-primary-600 hover:bg-primary-50 dark:hover:bg-slate-600 text-sm font-medium">Text
+                    Cleaner</a>
+            </div>
+        </div>
+    </main>
+    <div id="app-footer"></div>
+    <script type="module" src="./js/app.js?v=7"></script>
+</body>
+
+</html>

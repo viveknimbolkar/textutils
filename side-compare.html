@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Side-by-Side Text Compare - Compare Documents Free</title>
+    <meta name="robots" content="index, follow">
+    <meta name="description"
+        content="Free side-by-side text comparison tool. Compare two documents with synchronized scrolling and highlighted differences.">
+    <link rel="canonical" href="https://viveknimbolkar.github.io/textutils/side-compare.html" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: { 50: '#f0f9ff', 100: '#e0f2fe', 600: '#0284c7', 700: '#0369a1' } }, fontFamily: { sans: ['Inter', 'sans-serif'] } } } }</script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="bg-slate-50 dark:bg-slate-900 min-h-screen flex flex-col" data-tool="side-compare">
+    <div id="app-header"></div>
+    <main class="flex-grow container mx-auto px-4 py-8">
+        <nav class="flex mb-4 text-sm text-slate-500">
+            <ol class="flex items-center space-x-2">
+                <li><a href="./" class="hover:text-primary-600">Home</a></li>
+                <li><i class="fa-solid fa-chevron-right text-xs"></i></li>
+                <li><span class="text-slate-900 dark:text-slate-200">Side-by-Side Compare</span></li>
+            </ol>
+        </nav>
+        <h1 class="text-3xl font-extrabold text-slate-900 dark:text-white mb-6">Side-by-Side Compare</h1>
+
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-10">
+                <h1 class="text-3xl font-extrabold text-slate-900 dark:text-white mb-4">Side-by-Side Text Comparison
+                </h1>
+                <p class="text-lg text-slate-600 dark:text-slate-400">Compare documents with a synchronized,
+                    split-screen view to spot every detail.</p>
+            </div>
+
+            <div
+                class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 p-6 mb-12">
+                <div class="grid md:grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Document
+                            A</label>
+                        <textarea id="text-1" rows="12" placeholder="Paste first document here..."
+                            class="w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-mono text-sm resize-none focus:ring-2 focus:ring-primary-500"></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Document
+                            B</label>
+                        <textarea id="text-2" rows="12" placeholder="Paste second document here..."
+                            class="w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-mono text-sm resize-none focus:ring-2 focus:ring-primary-500"></textarea>
+                    </div>
+                </div>
+                <div class="flex justify-center mb-6 pt-4 border-t border-slate-100 dark:border-slate-700">
+                    <button id="compare-btn"
+                        class="px-8 py-3 bg-primary-600 hover:bg-primary-700 text-white rounded-lg font-bold shadow-sm transition-all flex items-center gap-2">
+                        <i class="fa-solid fa-columns"></i> Compare Side-by-Side
+                    </button>
+                </div>
+                <div id="results-panel"
+                    class="bg-slate-50 dark:bg-slate-900 rounded-lg p-4 border border-slate-200 dark:border-slate-700 min-h-[100px] flex items-center justify-center">
+                    <p class="text-slate-500">Enter text in both panels to compare...</p>
+                </div>
+            </div>
+        </div>
+
+        <article class="mt-16 prose dark:prose-invert max-w-none">
+            <h2>Split-Screen Document Comparison</h2>
+            <p>Our Side-by-Side Comparison tool makes it easy to review two versions of a text simultaneously. With
+                synchronized scrolling, you can maintain context while checking for discrepancies.</p>
+        </article>
+
+        <!-- SEO Content -->
+        <section class="max-w-5xl mx-auto mt-16 mb-12">
+
+            <!-- Features Grid -->
+            <div class="grid md:grid-cols-3 gap-6 mb-12">
+                <div
+                    class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
+                    <div
+                        class="w-10 h-10 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-lg flex items-center justify-center mb-4 text-xl">
+                        <i class="fa-solid fa-arrows-left-right"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900 dark:text-white">Sync Scrolling</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Scroll one panel, and the other follows. Keep your
+                        place in both documents automatically.</p>
+                </div>
+                <div
+                    class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
+                    <div
+                        class="w-10 h-10 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 rounded-lg flex items-center justify-center mb-4 text-xl">
+                        <i class="fa-solid fa-highlighter"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900 dark:text-white">Visual Feedback</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Instantly spot mismatches with clear visual cues
+                        and highlighting.</p>
+                </div>
+                <div
+                    class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
+                    <div
+                        class="w-10 h-10 bg-cyan-100 dark:bg-cyan-900/30 text-cyan-600 dark:text-cyan-400 rounded-lg flex items-center justify-center mb-4 text-xl">
+                        <i class="fa-solid fa-paste"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900 dark:text-white">Easy Input</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Works with any text content—code snippet, legal
+                        contracts, or student essays.</p>
+                </div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12 items-start">
+
+                <!-- About & Benefits -->
+                <div class="prose dark:prose-invert">
+                    <h2
+                        class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-600 dark:from-white dark:to-slate-400 mb-6">
+                        Perfect for Reviewing</h2>
+                    <p class="text-slate-600 dark:text-slate-400">
+                        Comparing documents shouldn't involve alt-tabbing between windows. This tool puts everything you
+                        need in a single view.
+                    </p>
+                    <ul class="space-y-4 marker:text-primary-500">
+                        <li>
+                            <strong class="text-slate-900 dark:text-white">Legal Documents</strong>
+                            <p class="text-xs text-slate-500 m-0">Ensure that a contract matches the agreed-upon draft.
+                            </p>
+                        </li>
+                        <li>
+                            <strong class="text-slate-900 dark:text-white">Translations</strong>
+                            <p class="text-xs text-slate-500 m-0">Compare original text with translated versions
+                                side-by-side.</p>
+                        </li>
+                        <li>
+                            <strong class="text-slate-900 dark:text-white">Plagiarism Check</strong>
+                            <p class="text-xs text-slate-500 m-0">Visually compare a student's submission against a
+                                source text.</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Styled How-To Guide -->
+                <div
+                    class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-8 border border-slate-100 dark:border-slate-800">
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
+                        <i class="fa-solid fa-list-check text-primary-500"></i> How to Compare
+                    </h3>
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-white dark:bg-slate-800 border-2 border-primary-500 text-primary-600 dark:text-primary-400 font-bold flex items-center justify-center text-sm shadow-sm">
+                                1</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-white text-sm">Load Documents</h4>
+                                <p class="text-sm text-slate-500 mt-1">Paste your first text in the left box and the
+                                    second in the right box.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 text-slate-500 font-bold flex items-center justify-center text-sm shadow-sm">
+                                2</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-white text-sm">Compare</h4>
+                                <p class="text-sm text-slate-500 mt-1">Click the button to process the texts.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 text-slate-500 font-bold flex items-center justify-center text-sm shadow-sm">
+                                3</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-white text-sm">Review</h4>
+                                <p class="text-sm text-slate-500 mt-1">Use the scrollbars to review the differences.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <div class="mt-6 bg-slate-100 dark:bg-slate-800 p-6 rounded-xl">
+            <h3 class="font-bold text-slate-900 dark:text-white mb-3">Related Tools</h3>
+            <div class="flex flex-wrap gap-3">
+                <a href="./diff-view.html"
+                    class="px-4 py-2 bg-white dark:bg-slate-700 rounded-lg text-primary-600 hover:bg-primary-50 dark:hover:bg-slate-600 text-sm font-medium">Diff
+                    View</a>
+                <a href="./find-replace.html"
+                    class="px-4 py-2 bg-white dark:bg-slate-700 rounded-lg text-primary-600 hover:bg-primary-50 dark:hover:bg-slate-600 text-sm font-medium">Find
+                    & Replace</a>
+                <a href="./word-counter.html"
+                    class="px-4 py-2 bg-white dark:bg-slate-700 rounded-lg text-primary-600 hover:bg-primary-50 dark:hover:bg-slate-600 text-sm font-medium">Word
+                    Counter</a>
+            </div>
+        </div>
+    </main>
+    <div id="app-footer"></div>
+    <script type="module" src="./js/app.js?v=7"></script>
+</body>
+
+</html>

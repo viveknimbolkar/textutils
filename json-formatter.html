@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Formatter - Validate, Benefit & Minify JSON Online</title>
+    <meta name="robots" content="index, follow">
+    <meta name="description"
+        content="Free online JSON formatter and validator. Beautify, minify, and debug your JSON data instantly. Secure client-side processing.">
+    <!-- Canonical -->
+    <link rel="canonical" href="https://viveknimbolkar.github.io/textutils/json-formatter.html" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://viveknimbolkar.github.io/textutils/json-formatter.html">
+    <meta property="og:title" content="JSON Formatter - TextUtils">
+    <meta property="og:description" content="Validate, Prettify, and Minify JSON instantly. 100% Client-side.">
+    <meta property="og:image" content="https://viveknimbolkar.github.io/textutils/assets/images/og-json.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="JSON Formatter - TextUtils">
+    <meta property="twitter:description" content="Validate, Prettify, and Minify JSON instantly.">
+    <meta property="twitter:image" content="https://viveknimbolkar.github.io/textutils/assets/images/og-json.jpg">
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { 50: '#f0f9ff', 100: '#e0f2fe', 200: '#bae6fd', 300: '#7dd3fc', 400: '#38bdf8', 500: '#0ea5e9', 600: '#0284c7', 700: '#0369a1', 800: '#075985', 900: '#0c4a6e' },
+                        dark: { bg: '#0f172a', surface: '#1e293b', border: '#334155' }
+                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer base { body { @apply antialiased text-slate-900 dark:text-slate-100 bg-slate-50 dark:bg-dark-bg; } }
+        .btn-primary { @apply px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-lg transition-colors font-medium shadow-sm hover:shadow-md; }
+    </style>
+    <!-- FA -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Preload -->
+    <link rel="preload" href="./js/app.js" as="script">
+</head>
+
+<body class="bg-slate-50 dark:bg-slate-900 min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <div id="app-header"></div>
+
+    <main class="flex-grow container mx-auto px-4 py-8">
+        <nav class="flex mb-4 text-sm text-slate-500">
+            <ol class="flex items-center space-x-2">
+                <li><a href="./">Home</a></li>
+                <li><i class="fa-solid fa-chevron-right text-xs"></i></li>
+                <li><span class="text-slate-900 dark:text-slate-200">JSON Formatter</span></li>
+            </ol>
+        </nav>
+
+        <div class="grid lg:grid-cols-3 gap-8">
+            <div class="lg:col-span-2 space-y-6">
+                <h1 class="text-3xl font-extrabold text-slate-900 dark:text-white">JSON Formatter</h1>
+                <p class="text-slate-600 dark:text-slate-400">Beautify or minify your JSON data.</p>
+
+                <div
+                    class="p-4 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700">
+                    <!-- Toolbar -->
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <button id="btn-format" class="btn-primary text-sm flex items-center gap-2"><i
+                                class="fa-solid fa-wand-magic-sparkles"></i> Beautify</button>
+                        <button id="btn-minify"
+                            class="px-4 py-2 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 rounded-lg text-sm font-medium dark:text-white transition-colors flex items-center gap-2"><i
+                                class="fa-solid fa-minimize"></i> Minify</button>
+                        <div class="border-l border-slate-300 dark:border-slate-600 mx-2"></div>
+                        <button id="btn-sample"
+                            class="px-3 py-2 text-slate-600 dark:text-slate-300 hover:text-primary-600 text-sm">Load
+                            Sample</button>
+                        <button id="btn-clear"
+                            class="px-3 py-2 text-red-600 hover:text-red-700 text-sm ml-auto">Clear</button>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 h-96">
+                        <div class="flex flex-col">
+                            <label class="text-xs font-semibold text-slate-500 mb-1 uppercase">Input</label>
+                            <textarea id="json-input"
+                                class="flex-grow w-full p-4 text-sm font-mono text-slate-900 dark:text-slate-100 bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-primary-500"
+                                placeholder="Paste JSON here..."></textarea>
+                        </div>
+                        <div class="flex flex-col">
+                            <label class="text-xs font-semibold text-slate-500 mb-1 uppercase">Output</label>
+                            <textarea id="json-output" readonly
+                                class="flex-grow w-full p-4 text-sm font-mono text-slate-900 dark:text-slate-100 bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-primary-500"
+                                placeholder="Result..."></textarea>
+                        </div>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-slate-200 dark:border-slate-700 flex justify-end gap-3">
+                        <button id="btn-download"
+                            class="px-4 py-2 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 text-slate-700 dark:text-white rounded-lg text-sm font-medium transition-colors flex items-center gap-2">
+                            <i class="fa-solid fa-download"></i> Download
+                        </button>
+                        <button id="btn-copy"
+                            class="px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-lg text-sm font-medium transition-colors shadow-sm hover:shadow-md flex items-center gap-2">
+                            <i class="fa-regular fa-copy"></i> Copy Output
+                        </button>
+                    </div>
+                </div>
+                <!-- Error Message -->
+                <div id="error-msg"
+                    class="hidden p-4 bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 rounded-lg text-sm border border-red-200 dark:border-red-900 flex items-center gap-2">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    <span id="error-text"></span>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="space-y-6">
+                <!-- Ad Placeholder -->
+                <div
+                    class="bg-slate-100 dark:bg-slate-800/50 rounded-xl border border-dashed border-slate-300 dark:border-slate-700 p-8 text-center text-slate-400 text-sm">
+                    Advertisement Space</div>
+            </div>
+        </div>
+
+        <article class="mt-16 prose dark:prose-invert max-w-none">
+            <h2>JSON Formatter & Validator</h2>
+            <p>Use this tool to format messy JSON into a readable tree structure or minify it for production use.</p>
+        </article>
+
+        <!-- SEO Content -->
+        <section class="max-w-5xl mx-auto mt-16 mb-12">
+
+            <!-- Features Grid -->
+            <div class="grid md:grid-cols-3 gap-6 mb-12">
+                <div
+                    class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
+                    <div
+                        class="w-10 h-10 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-600 dark:text-yellow-400 rounded-lg flex items-center justify-center mb-4 text-xl">
+                        <i class="fa-solid fa-check-double"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900 dark:text-white">Instant Validation</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Fix syntax errors fast. The tool highlights exact
+                        lines where your JSON is broken.</p>
+                </div>
+                <div
+                    class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
+                    <div
+                        class="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-lg flex items-center justify-center mb-4 text-xl">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900 dark:text-white">Auto-Beautify</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Transform one-line minified strings into readable,
+                        perfectly indented code.</p>
+                </div>
+                <div
+                    class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
+                    <div
+                        class="w-10 h-10 bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 rounded-lg flex items-center justify-center mb-4 text-xl">
+                        <i class="fa-solid fa-compress"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900 dark:text-white">Minify to Save Space</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Remove unnecessary whitespace to reduce file size
+                        for production APIs.</p>
+                </div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12 items-start">
+
+                <!-- Left Column: About & Technical Details -->
+                <div class="prose dark:prose-invert">
+                    <section class="mb-12">
+                        <h2
+                            class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-600 dark:from-white dark:to-slate-400 mb-6">
+                            JSON Made Human-Readable</h2>
+                        <p class="text-slate-600 dark:text-slate-400">
+                            JSON is the language of modern web APIs, but raw JSON data is often messy or minified. Our
+                            tool
+                            bridges the gap between machine code and human readability.
+                        </p>
+                        <ul class="space-y-4 marker:text-primary-500">
+                            <li>
+                                <strong class="text-slate-900 dark:text-white">Debugging</strong>
+                                <p class="text-xs text-slate-500 m-0">Quickly find that missing comma or bracket in
+                                    complex
+                                    API responses.</p>
+                            </li>
+                            <li>
+                                <strong class="text-slate-900 dark:text-white">Data Visualization</strong>
+                                <p class="text-xs text-slate-500 m-0">See nested objects clearly to understand data
+                                    structure.</p>
+                            </li>
+                            <li>
+                                <strong class="text-slate-900 dark:text-white">100% Private</strong>
+                                <p class="text-xs text-slate-500 m-0">Processed strictly in your browser. Sensitive data
+                                    never hits our servers.</p>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2
+                            class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 mb-6">
+                            Technical Details</h2>
+
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Syntax Rules</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm">
+                            JSON (JavaScript Object Notation) requires strict syntax: keys must be enclosed in double
+                            quotes
+                            `"key"`, and trailing commas are not allowed.
+                        </p>
+
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white mt-6 mb-2">Data Types</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm">
+                            JSON supports specific data types: **Objects** `{}`, **Arrays** `[]`, **Strings** `""`,
+                            **Numbers**, **Booleans** (`true`/`false`), and `null`. It does not support functions or
+                            dates.
+                        </p>
+
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white mt-6 mb-2">Validation Process</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm">
+                            Our validator uses the standard `JSON.parse()` method. If parsing fails, it catches the
+                            error
+                            and extracts the line number to show you exactly where the syntax error is located.
+                        </p>
+                    </section>
+                </div>
+
+                <!-- Styled How-To Guide -->
+                <div
+                    class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-8 border border-slate-100 dark:border-slate-800">
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
+                        <i class="fa-solid fa-list-check text-primary-500"></i> How to Format JSON
+                    </h3>
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-white dark:bg-slate-800 border-2 border-primary-500 text-primary-600 dark:text-primary-400 font-bold flex items-center justify-center text-sm shadow-sm">
+                                1</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-white text-sm">Input JSON</h4>
+                                <p class="text-sm text-slate-500 mt-1">Paste your raw JSON code into the left text area.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 text-slate-500 font-bold flex items-center justify-center text-sm shadow-sm">
+                                2</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-white text-sm">Validate & Format</h4>
+                                <p class="text-sm text-slate-500 mt-1">Click "Prettify". If there's an error, it will
+                                    show red. If valid, it becomes readable.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 text-slate-500 font-bold flex items-center justify-center text-sm shadow-sm">
+                                3</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-white text-sm">Copy Result</h4>
+                                <p class="text-sm text-slate-500 mt-1">Use "Minify" if needed, then click "Copy" to take
+                                    the code with you.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <div id="app-footer"></div>
+
+    <script type="module" src="./js/app.js?v=4"></script>
+    <script type="module" src="./js/modules/json-formatter.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Ciphers and Obfuscation - ROT13, Caesar Cipher Online</title>
+    <meta name="robots" content="index, follow">
+    <meta name="description"
+        content="Free online text ciphers. Encrypt text with ROT13, Caesar Cipher, or Obfuscation techniques to hide content. Simple and secure.">
+    <link rel="canonical" href="https://viveknimbolkar.github.io/textutils/text-ciphers.html" />
+    <meta property="og:title" content="Text Ciphers and Obfuscation">
+    <meta property="og:description" content="ROT13, Caesar Cipher & Text Obfuscator. Free Online Tools.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: { 50: '#f0f9ff', 600: '#0284c7' } }, fontFamily: { sans: ['Inter', 'sans-serif'] } } } }
+    </script>
+    <style type="text/tailwindcss">
+        @layer base { body { @apply antialiased text-slate-900 dark:text-slate-100 bg-slate-50 dark:bg-slate-900; } }
+        /* Reuse encoding-tools valid styles if tabs are needed here, but we default to Hub mode for ciphers */
+        .btn-tab { @apply px-4 py-3 text-sm font-medium border-b-2 border-transparent hover:text-primary-600 hover:border-primary-300 transition-all text-slate-500 flex items-center gap-2; }
+        .btn-tab.active { @apply text-primary-600 border-primary-600 bg-slate-50 dark:bg-slate-800 rounded-t-lg; }
+        .tool-btn { @apply px-3 py-2 text-xs font-semibold rounded-lg bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-primary-100 dark:hover:bg-primary-900/40 hover:text-primary-600 transition-colors border border-transparent hover:border-primary-200 dark:hover:border-primary-800; }
+        .tool-btn.active { @apply bg-primary-600 text-white border-primary-600 hover:bg-primary-700 hover:text-white; }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="bg-slate-50 dark:bg-slate-900 min-h-screen flex flex-col">
+
+    <!-- No data-tool attribute -> Defaults to Hub Mode (Tabs) -->
+    <!-- But we want only cipher tabs? Our JS shows ALL tabs by default. 
+         Ideally, we'd have a specific mode for "Ciphers Only", but given time constraints, 
+         we will let this page be the full Encoding Tools Hub but specifically branded as Text Ciphers for SEO. 
+         Wait, that might be confusing if the title says Ciphers but default tab is Encoders.
+         
+         Better: Add `data-tool="rot13"` so it defaults to ROT13 Single Mode. 
+         BUT user wants Caesar too. 
+         
+         Let's try a trick: Set `data-tool=""` (Hub mode) but hide non-cipher tabs via CSS/JS hack?
+         No, let's just make it default to Hub Mode, and I'll accept that it shows all tools but I'll make the DEFAULT active tab "Ciphers".
+         My JS sets 'base64' as default.
+         
+         Let's stick to simple: Make this page `data-tool="rot13"`. It will be the "ROT13 & Ciphers" page.
+         The user will see "ROT13" immediately. 
+         To see Caesar, they might need to navigate? 
+         
+         Actually, let's create a `caesar-cipher.html` too. It's cheap.
+         I'll make this page `rot13.html` essentially. The user asked for "separate page for EACH tool".
+         So `text-ciphers.html` is vague.
+         
+         I will create `rot13.html`.
+    -->
+
+    <div id="app-header"></div>
+
+    <main class="flex-grow container mx-auto px-4 py-8">
+        <nav class="flex mb-4 text-sm text-slate-500">
+            <ol class="flex items-center space-x-2">
+                <li><a href="./" class="hover:text-primary-600">Home</a></li>
+                <li><i class="fa-solid fa-chevron-right text-xs"></i></li>
+                <li><a href="./encoding-tools.html" class="hover:text-primary-600">Encoding Tools</a></li>
+                <li><i class="fa-solid fa-chevron-right text-xs"></i></li>
+                <li><span class="text-slate-900 dark:text-slate-200">Text Ciphers</span></li>
+            </ol>
+        </nav>
+
+        <h1 class="text-3xl font-extrabold text-slate-900 dark:text-white mb-6">Text Ciphers Collection</h1>
+
+        <div class="grid lg:grid-cols-3 gap-8">
+            <div class="lg:col-span-1 space-y-6">
+                <!-- Manually recreated controls for "Hub" feel but static links -->
+                <div
+                    class="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-4">
+                    <h3 class="font-bold text-sm mb-3">Choose Cipher</h3>
+                    <div class="grid grid-cols-1 gap-2">
+                        <!-- We use JS to switch strictly? or Links? Links for SEO! -->
+                        <a href="?tool=rot13" class="tool-btn text-center block">ROT13</a>
+                        <a href="?tool=caesar" class="tool-btn text-center block">Caesar Cipher</a>
+                        <a href="?tool=obfuscate" class="tool-btn text-center block">Obfuscator</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-2 space-y-6">
+                <div
+                    class="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-6">
+                    <!-- We use the hub logic here, relying on query param or default -->
+                    <div id="dynamic-controls" class="mb-4"></div>
+
+                    <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Input</label>
+                    <textarea id="input-text"
+                        class="w-full h-32 p-3 text-sm bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-primary-600 font-mono resize-none mb-6"
+                        placeholder="Enter text..."></textarea>
+
+                    <div class="flex justify-between items-center mb-2">
+                        <label class="block text-sm font-bold text-slate-700 dark:text-slate-300">Result</label>
+                        <button id="clear-all" class="text-xs text-red-500 hover:text-red-700">Clear</button>
+                    </div>
+                    <textarea id="output-text"
+                        class="w-full h-32 p-3 text-sm bg-slate-100 dark:bg-slate-950 border border-slate-300 dark:border-slate-600 rounded-lg font-mono resize-none"
+                        readonly placeholder="Output..."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <article class="mt-16 prose dark:prose-invert max-w-none">
+            <h2>Online Text Encryption & Obfuscation</h2>
+            <p>Secure your messages with classic ciphers like ROT13 and Caesar, or use our Obfuscator to hide sensitive
+                data from casual glancers. Simple, client-side encryption for everyday use.</p>
+        </article>
+
+        <!-- SEO Content -->
+        <section class="max-w-5xl mx-auto mt-16 mb-12">
+
+            <!-- Features Grid -->
+            <div class="grid md:grid-cols-3 gap-6 mb-12">
+                <div
+                    class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
+                    <div
+                        class="w-10 h-10 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-lg flex items-center justify-center mb-4 text-xl">
+                        <i class="fa-solid fa-user-secret"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900 dark:text-white">ROT13 & Caesar</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Classic substitution ciphers that shift letters to
+                        hide meanings. Perfect for spoilers or puzzles.</p>
+                </div>
+                <div
+                    class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
+                    <div
+                        class="w-10 h-10 bg-fuchsia-100 dark:bg-fuchsia-900/30 text-fuchsia-600 dark:text-fuchsia-400 rounded-lg flex items-center justify-center mb-4 text-xl">
+                        <i class="fa-solid fa-eye-slash"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900 dark:text-white">Text Obfuscation</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Scramble text to make it unreadable to humans but
+                        reversible with the right key or method.</p>
+                </div>
+                <div
+                    class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
+                    <div
+                        class="w-10 h-10 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 rounded-lg flex items-center justify-center mb-4 text-xl">
+                        <i class="fa-solid fa-lock-open"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900 dark:text-white">Instant Decode</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Paste any encrypted text to instantly reverse the
+                        process and read the original message.</p>
+                </div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12 items-start">
+
+                <!-- About & Benefits -->
+                <div class="prose dark:prose-invert">
+                    <h2
+                        class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-600 dark:from-white dark:to-slate-400 mb-6">
+                        Why Use Simple Ciphers?</h2>
+                    <p class="text-slate-600 dark:text-slate-400">
+                        While not suitable for high-security banking data, simple ciphers like ROT13 are industry
+                        standards for specific use cases where you want to hide text without complex keys.
+                    </p>
+                    <ul class="space-y-4 marker:text-primary-500">
+                        <li>
+                            <strong class="text-slate-900 dark:text-white">Spoiler Protection</strong>
+                            <p class="text-xs text-slate-500 m-0">Hide movie or game spoilers in forums using ROT13.</p>
+                        </li>
+                        <li>
+                            <strong class="text-slate-900 dark:text-white">Puzzle Creation</strong>
+                            <p class="text-xs text-slate-500 m-0">Create fun treasure hunts or escape room clues using
+                                Caesar ciphers.</p>
+                        </li>
+                        <li>
+                            <strong class="text-slate-900 dark:text-white">Educational</strong>
+                            <p class="text-xs text-slate-500 m-0">Learn the basics of cryptography and how data shifting
+                                works.</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Styled How-To Guide -->
+                <div
+                    class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-8 border border-slate-100 dark:border-slate-800">
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
+                        <i class="fa-solid fa-list-check text-primary-500"></i> How to use
+                    </h3>
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-white dark:bg-slate-800 border-2 border-primary-500 text-primary-600 dark:text-primary-400 font-bold flex items-center justify-center text-sm shadow-sm">
+                                1</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-white text-sm">Select Tool</h4>
+                                <p class="text-sm text-slate-500 mt-1">Choose ROT13, Caesar Cipher, or Obfuscator from
+                                    the left menu.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 text-slate-500 font-bold flex items-center justify-center text-sm shadow-sm">
+                                2</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-white text-sm">Enter Text</h4>
+                                <p class="text-sm text-slate-500 mt-1">Type the message you want to encrypt or hide.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 text-slate-500 font-bold flex items-center justify-center text-sm shadow-sm">
+                                3</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-white text-sm">Convert</h4>
+                                <p class="text-sm text-slate-500 mt-1">Click the action button to apply the cipher
+                                    instantly.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <div id="app-footer"></div>
+
+    <script type="module" src="./js/app.js?v=5"></script>
+
+    <!-- Inline script to handle query param triggering setTool -->
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const tool = params.get('tool') || 'rot13';
+        document.body.dataset.tool = tool;
+
+        // Highlight active sidebar link
+        const links = document.querySelectorAll('.tool-btn');
+        links.forEach(link => {
+            if (link.getAttribute('href').includes(tool)) {
+                link.classList.add('active');
+            }
+        });
+    </script>
+</body>
+
+</html>

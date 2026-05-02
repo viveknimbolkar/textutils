@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JWT Decoder Online - View Header & Payload</title>
+    <meta name="robots" content="index, follow">
+    <meta name="description"
+        content="Free online JWT (JSON Web Token) decoder. Paste your token to instantly decode and view the header and payload claims. Client-side, secure, and fast.">
+    <link rel="canonical" href="https://viveknimbolkar.github.io/textutils/jwt-decoder.html" />
+    <meta property="og:title" content="JWT Decoder Online">
+    <meta property="og:description"
+        content="Decode JSON Web Tokens instantly. View claims and headers. Free Online Tool.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: { 50: '#f0f9ff', 600: '#0284c7' } }, fontFamily: { sans: ['Inter', 'sans-serif'] } } } }
+    </script>
+    <style type="text/tailwindcss">
+        @layer base { body { @apply antialiased text-slate-900 dark:text-slate-100 bg-slate-50 dark:bg-slate-900; } }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="bg-slate-50 dark:bg-slate-900 min-h-screen flex flex-col" data-tool="jwt">
+
+    <div id="app-header"></div>
+
+    <main class="flex-grow container mx-auto px-4 py-8">
+        <nav class="flex mb-4 text-sm text-slate-500">
+            <ol class="flex items-center space-x-2">
+                <li><a href="./" class="hover:text-primary-600">Home</a></li>
+                <li><i class="fa-solid fa-chevron-right text-xs"></i></li>
+                <li><a href="./encoding-tools.html" class="hover:text-primary-600">Encoding Tools</a></li>
+                <li><i class="fa-solid fa-chevron-right text-xs"></i></li>
+                <li><span class="text-slate-900 dark:text-slate-200">JWT Decoder</span></li>
+            </ol>
+        </nav>
+
+        <h1 class="text-3xl font-extrabold text-slate-900 dark:text-white mb-6">JWT Decoder</h1>
+
+        <div class="grid lg:grid-cols-3 gap-8">
+            <div class="lg:col-span-2 space-y-6">
+                <div
+                    class="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-6">
+                    <div id="dynamic-controls" class="mb-4"></div>
+
+                    <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Paste JWT
+                        Token</label>
+                    <textarea id="input-text"
+                        class="w-full h-32 p-3 text-sm bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-primary-600 font-mono resize-none mb-6"
+                        placeholder="ey..."></textarea>
+
+                    <div class="flex justify-between items-center mb-2">
+                        <label class="block text-sm font-bold text-slate-700 dark:text-slate-300">Decoded Token</label>
+                        <div class="flex gap-2">
+                            <button id="clear-all" class="text-xs text-red-500 hover:text-red-700">Clear</button>
+                            <button id="copy-result"
+                                class="text-primary-600 hover:text-primary-700 text-sm font-bold"><i
+                                    class="fa-regular fa-copy"></i> Copy</button>
+                        </div>
+                    </div>
+                    <textarea id="output-text"
+                        class="w-full h-80 p-3 text-sm bg-slate-100 dark:bg-slate-950 border border-slate-300 dark:border-slate-600 rounded-lg font-mono resize-none"
+                        readonly placeholder="Decoded Header & Payload..."></textarea>
+                </div>
+            </div>
+
+            <div class="lg:col-span-1 space-y-6">
+                <div
+                    class="bg-amber-50 dark:bg-amber-900/20 p-6 rounded-xl border border-amber-100 dark:border-amber-800">
+                    <h3 class="font-bold text-amber-900 dark:text-amber-300 mb-2">What is a JWT?</h3>
+                    <p class="text-sm text-amber-800 dark:text-amber-200">JSON Web Tokens are an open, industry standard
+                        RFC 7519 method for securely representing claims between two parties. This tool decodes the
+                        Base64Url encoded header and payload parts.</p>
+                </div>
+            </div>
+        </div>
+
+        <article class="mt-16 prose dark:prose-invert max-w-none">
+            <h2>Free Online JWT Debugger</h2>
+            <p>Decode and verify JSON Web Tokens (JWT) instantly. View headers, algorithms, and payload claims in a
+                readable JSON format.</p>
+        </article>
+
+        <!-- SEO Content -->
+        <section class="max-w-5xl mx-auto mt-16 mb-12">
+
+            <!-- Features Grid -->
+            <div class="grid md:grid-cols-3 gap-6 mb-12">
+                <div
+                    class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
+                    <div
+                        class="w-10 h-10 bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 rounded-lg flex items-center justify-center mb-4 text-xl">
+                        <i class="fa-solid fa-eye"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900 dark:text-white">Visualize Claims</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Instantly parses the Base64Url string to show you
+                        the stored user data (sub, iat, exp).</p>
+                </div>
+                <div
+                    class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
+                    <div
+                        class="w-10 h-10 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 rounded-lg flex items-center justify-center mb-4 text-xl">
+                        <i class="fa-solid fa-clock"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900 dark:text-white">Check Expiry</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Converts the `exp` timestamp into a human-readable
+                        date so you know if the token is valid.</p>
+                </div>
+                <div
+                    class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
+                    <div
+                        class="w-10 h-10 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-600 dark:text-yellow-400 rounded-lg flex items-center justify-center mb-4 text-xl">
+                        <i class="fa-solid fa-shield"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900 dark:text-white">100% Private</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Decoding happens entirely in your browser. Your
+                        sensitive auth tokens are never sent to a server.</p>
+                </div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12 items-start">
+
+                <!-- Left Column: About & Technical Details -->
+                <div class="prose dark:prose-invert">
+                    <section class="mb-12">
+                        <h2
+                            class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-600 dark:from-white dark:to-slate-400 mb-6">
+                            Understanding JWTs</h2>
+                        <p class="text-slate-600 dark:text-slate-400">
+                            JSON Web Tokens are the standard for stateless authentication. A JWT consists of three parts
+                            separated by dots:
+                        </p>
+                        <ul class="space-y-4 marker:text-amber-500">
+                            <li>
+                                <strong class="text-slate-900 dark:text-white">Header</strong>
+                                <p class="text-xs text-slate-500 m-0">Contains metadata about the type of token and the
+                                    signing algorithm (e.g., HS256).</p>
+                            </li>
+                            <li>
+                                <strong class="text-slate-900 dark:text-white">Payload</strong>
+                                <p class="text-xs text-slate-500 m-0">Contains the "claims" about the user (ID, role,
+                                    expiration) and other data.</p>
+                            </li>
+                            <li>
+                                <strong class="text-slate-900 dark:text-white">Signature</strong>
+                                <p class="text-xs text-slate-500 m-0">Used to verify that the message wasn't changed
+                                    along
+                                    the way.</p>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2
+                            class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 mb-6">
+                            Technical Details</h2>
+
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Structure Breakdown</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm">
+                            A JWT looks like `xxxxx.yyyyy.zzzzz`. The first part is the header, the second is the
+                            payload,
+                            and the third is the signature. Each part is separated by a period (`.`).
+                        </p>
+
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white mt-6 mb-2">Base64Url Encoding</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm">
+                            JWTs use **Base64Url** encoding (RFC 7515), which is similar to standard Base64 but uses `-`
+                            and
+                            `_` instead of `+` and `/`, making it safe for URLs.
+                        </p>
+
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white mt-6 mb-2">Security Warning</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm">
+                            This tool only **decodes** the token (makes it readable). It does not **verify** the
+                            signature.
+                            Anyone can decode a JWT, but only the server with the secret key can verify if it's
+                            authentic.
+                        </p>
+                    </section>
+                </div>
+
+                <!-- Styled How-To Guide -->
+                <div
+                    class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-8 border border-slate-100 dark:border-slate-800">
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
+                        <i class="fa-solid fa-list-check text-amber-500"></i> How to use
+                    </h3>
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-white dark:bg-slate-800 border-2 border-amber-500 text-amber-600 dark:text-amber-400 font-bold flex items-center justify-center text-sm shadow-sm">
+                                1</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-white text-sm">Paste Token</h4>
+                                <p class="text-sm text-slate-500 mt-1">Insert your JWT string (usually starts with
+                                    'ey...').</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 text-slate-500 font-bold flex items-center justify-center text-sm shadow-sm">
+                                2</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-white text-sm">Decode</h4>
+                                <p class="text-sm text-slate-500 mt-1">Click "Decode Token" to parse the Base64Url
+                                    parts.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 text-slate-500 font-bold flex items-center justify-center text-sm shadow-sm">
+                                3</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-white text-sm">Inspect Claims</h4>
+                                <p class="text-sm text-slate-500 mt-1">View the Header and Payload data in JSON format.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <div id="app-footer"></div>
+
+    <script type="module" src="./js/app.js?v=4"></script>
+    <script type="module" src="./js/modules/encoding-tools.js"></script>
+</body>
+
+</html>

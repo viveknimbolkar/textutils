@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XML Formatter Online - Prettify XML Free</title>
+    <meta name="robots" content="index, follow">
+    <meta name="description"
+        content="Free online XML formatter. Beautify and indent XML data instantly. Client-side processing.">
+    <link rel="canonical" href="https://viveknimbolkar.github.io/textutils/xml-format.html" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: { 50: '#f0f9ff', 600: '#0284c7' } }, fontFamily: { sans: ['Inter', 'sans-serif'] } } } }</script>
+    <style type="text/tailwindcss">
+        @layer base { body { @apply antialiased text-slate-900 dark:text-slate-100 bg-slate-50 dark:bg-slate-900; } }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="bg-slate-50 dark:bg-slate-900 min-h-screen flex flex-col" data-tool="xml-format">
+    <div id="app-header"></div>
+    <main class="flex-grow container mx-auto px-4 py-8">
+        <nav class="flex mb-4 text-sm text-slate-500">
+            <ol class="flex items-center space-x-2">
+                <li><a href="./" class="hover:text-primary-600">Home</a></li>
+                <li><i class="fa-solid fa-chevron-right text-xs"></i></li>
+                <li><span class="text-slate-900 dark:text-slate-200">XML Formatter</span></li>
+            </ol>
+        </nav>
+        <h1 class="text-3xl font-extrabold text-slate-900 dark:text-white mb-6">XML Formatter</h1>
+        <div class="grid lg:grid-cols-3 gap-8">
+            <div class="lg:col-span-2 space-y-6">
+                <div
+                    class="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-6">
+                    <div id="dynamic-controls" class="mb-4"></div>
+                    <div class="flex justify-between items-center mb-2">
+                        <label class="block text-sm font-bold text-slate-700 dark:text-slate-300">Input XML</label>
+                        <div class="relative">
+                            <input type="file" id="file-upload" class="hidden" accept=".xml,.txt">
+                            <button onclick="document.getElementById('file-upload').click()"
+                                class="text-xs text-primary-600 hover:text-primary-700 font-medium flex items-center gap-1">
+                                <i class="fa-solid fa-cloud-arrow-up"></i> Upload File
+                            </button>
+                        </div>
+                    </div>
+                    <textarea id="input-text"
+                        class="w-full h-48 p-3 text-sm bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-primary-600 font-mono resize-none mb-6"
+                        placeholder="<root><child>...</child></root>"></textarea>
+                    <div class="flex justify-between items-center mb-2"><label
+                            class="block text-sm font-bold text-slate-700 dark:text-slate-300">Formatted Output</label>
+                        <div class="flex gap-2">
+                            <button id="clear-all" class="text-xs text-red-500 hover:text-red-700">Clear</button>
+                            <button id="copy-result"
+                                class="text-primary-600 hover:text-primary-700 text-sm font-bold"><i
+                                    class="fa-regular fa-copy"></i> Copy</button>
+                            <button id="download-btn"
+                                class="text-primary-600 hover:text-primary-700 text-sm font-bold ml-2"><i
+                                    class="fa-solid fa-download"></i> Download</button>
+                        </div>
+                    </div>
+                    <textarea id="output-text"
+                        class="w-full h-48 p-3 text-sm bg-slate-100 dark:bg-slate-950 border border-slate-300 dark:border-slate-600 rounded-lg font-mono resize-none"
+                        readonly></textarea>
+                </div>
+            </div>
+            <div class="lg:col-span-1 space-y-6">
+                <div class="bg-cyan-50 dark:bg-cyan-900/20 p-6 rounded-xl border border-cyan-100 dark:border-cyan-800">
+                    <h3 class="font-bold text-cyan-900 dark:text-cyan-300 mb-2">XML Formatting</h3>
+                    <p class="text-sm text-cyan-800 dark:text-cyan-200">Adds proper indentation to XML for readability
+                        and debugging.</p>
+                </div>
+            </div>
+        </div>
+
+        <article class="mt-16 prose dark:prose-invert max-w-none">
+            <h2>Free Online XML Formatter</h2>
+            <p>Use this tool to format, indent, and prettify XML code. Correct syntax errors and make XML readable
+                instantly.</p>
+        </article>
+
+        <!-- SEO Content -->
+        <section class="max-w-5xl mx-auto mt-16 mb-12">
+
+            <!-- Features Grid -->
+            <div class="grid md:grid-cols-3 gap-6 mb-12">
+                <div
+                    class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
+                    <div
+                        class="w-10 h-10 bg-cyan-100 dark:bg-cyan-900/30 text-cyan-600 dark:text-cyan-400 rounded-lg flex items-center justify-center mb-4 text-xl">
+                        <i class="fa-solid fa-indent"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900 dark:text-white">Smart Indentation</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Turns "spaghetti" XML into a clean, hierarchical
+                        tree structure automatically.</p>
+                </div>
+                <div
+                    class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
+                    <div
+                        class="w-10 h-10 bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 rounded-lg flex items-center justify-center mb-4 text-xl">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900 dark:text-white">Error Detection</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Highlights missing tags or unclosed elements so
+                        you can fix broken feeds fast.</p>
+                </div>
+                <div
+                    class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
+                    <div
+                        class="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-lg flex items-center justify-center mb-4 text-xl">
+                        <i class="fa-solid fa-laptop-code"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900 dark:text-white">Developer Ready</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Perfect for debugging SOAP APIs, RSS feeds, and
+                        Sitemap files.</p>
+                </div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12 items-start">
+
+                <!-- Left Column: About & Technical Details -->
+                <div class="prose dark:prose-invert">
+                    <section class="mb-12">
+                        <h2
+                            class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-600 dark:from-white dark:to-slate-400 mb-6">
+                            Taming XML Complexity</h2>
+                        <p class="text-slate-600 dark:text-slate-400">
+                            XML (Extensible Markup Language) is verbose and hard to read when minified. Our formatter
+                            restores clarity to your data structures.
+                        </p>
+                        <ul class="space-y-4 marker:text-cyan-500">
+                            <li>
+                                <strong class="text-slate-900 dark:text-white">SOAP Debugging</strong>
+                                <p class="text-xs text-slate-500 m-0">Visualize complex SOAP request/response bodies to
+                                    identify logic errors.</p>
+                            </li>
+                            <li>
+                                <strong class="text-slate-900 dark:text-white">RSS & Sitemaps</strong>
+                                <p class="text-xs text-slate-500 m-0">Validate website feed structures before submitting
+                                    them to aggregators or search engines.</p>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2
+                            class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 mb-6">
+                            Technical Details</h2>
+
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">XML Structure</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm">
+                            XML relies on rigorous opening and closing tags `<tag>...</tag>`. Attributes must be quoted,
+                            and
+                            HTML self-closing rules don't always apply (e.g., `<br />` is valid, `<br>` is not).
+                        </p>
+
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white mt-6 mb-2">Whitespace Handling</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm">
+                            Whitespace between tags is notoriously tricky in XML. Our tool normalizes this space to
+                            create
+                            a clean indentation structure while preserving whitespace *inside* text nodes where it
+                            matters.
+                        </p>
+
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white mt-6 mb-2">Nesting Depth</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm">
+                            Deeply nested XML files (common in enterprise configs) are handled gracefully, ensuring that
+                            every level of the tree is visually distinct.
+                        </p>
+                    </section>
+                </div>
+
+                <!-- Styled How-To Guide -->
+                <div
+                    class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-8 border border-slate-100 dark:border-slate-800">
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
+                        <i class="fa-solid fa-list-check text-cyan-500"></i> How to Format XML
+                    </h3>
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-white dark:bg-slate-800 border-2 border-cyan-500 text-cyan-600 dark:text-cyan-400 font-bold flex items-center justify-center text-sm shadow-sm">
+                                1</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-white text-sm">Paste XML</h4>
+                                <p class="text-sm text-slate-500 mt-1">Input your minified or messy XML string into the
+                                    editor.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 text-slate-500 font-bold flex items-center justify-center text-sm shadow-sm">
+                                2</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-white text-sm">Format</h4>
+                                <p class="text-sm text-slate-500 mt-1">The tool automatically indents tags and
+                                    attributes for maximum readability.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 text-slate-500 font-bold flex items-center justify-center text-sm shadow-sm">
+                                3</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-white text-sm">Copy</h4>
+                                <p class="text-sm text-slate-500 mt-1">Grab the clean code to paste into your IDE or
+                                    documentation.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+    <div id="app-footer"></div>
+    <script type="module" src="./js/app.js?v=5"></script>
+    <script type="module" src="./js/modules/formatter-tools.js"></script>
+</body>
+
+</html>

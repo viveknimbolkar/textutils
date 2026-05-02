@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Base64 Encode and Decode Online - Free Tool</title>
+    <meta name="robots" content="index, follow">
+    <meta name="description"
+        content="Free online Base64 encoder and decoder. Convert text to Base64 strings or decode Base64 back to text instantly. Secure, client-side processing.">
+    <link rel="canonical" href="https://viveknimbolkar.github.io/textutils/base64-encode.html" />
+    <meta property="og:title" content="Base64 Encode and Decode Online">
+    <meta property="og:description" content="Convert text to Base64 strings instantly. Secure & Free.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: { 50: '#f0f9ff', 600: '#0284c7' } }, fontFamily: { sans: ['Inter', 'sans-serif'] } } } }
+    </script>
+    <style type="text/tailwindcss">
+        @layer base { body { @apply antialiased text-slate-900 dark:text-slate-100 bg-slate-50 dark:bg-slate-900; } }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="bg-slate-50 dark:bg-slate-900 min-h-screen flex flex-col" data-tool="base64">
+
+    <div id="app-header"></div>
+
+    <main class="flex-grow container mx-auto px-4 py-8">
+        <nav class="flex mb-4 text-sm text-slate-500">
+            <ol class="flex items-center space-x-2">
+                <li><a href="./" class="hover:text-primary-600">Home</a></li>
+                <li><i class="fa-solid fa-chevron-right text-xs"></i></li>
+                <li><a href="./encoding-tools.html" class="hover:text-primary-600">Encoding Tools</a></li>
+                <li><i class="fa-solid fa-chevron-right text-xs"></i></li>
+                <li><span class="text-slate-900 dark:text-slate-200">Base64 Encoder</span></li>
+            </ol>
+        </nav>
+
+        <h1 class="text-3xl font-extrabold text-slate-900 dark:text-white mb-6">Base64 Encoder & Decoder</h1>
+
+        <div class="grid lg:grid-cols-3 gap-8">
+            <div class="lg:col-span-2 space-y-6">
+                <div
+                    class="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-6">
+                    <div id="dynamic-controls" class="mb-4"></div>
+
+                    <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Input</label>
+                    <textarea id="input-text"
+                        class="w-full h-32 p-3 text-sm bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-primary-600 font-mono resize-none mb-6"
+                        placeholder="Paste text here..."></textarea>
+
+                    <div class="flex justify-between items-center mb-2">
+                        <label class="block text-sm font-bold text-slate-700 dark:text-slate-300">Result</label>
+                        <div class="flex gap-2">
+                            <button id="clear-all" class="text-xs text-red-500 hover:text-red-700">Clear</button>
+                            <button id="copy-result"
+                                class="text-primary-600 hover:text-primary-700 text-sm font-bold"><i
+                                    class="fa-regular fa-copy"></i> Copy</button>
+                        </div>
+                    </div>
+                    <textarea id="output-text"
+                        class="w-full h-40 p-3 text-sm bg-slate-100 dark:bg-slate-950 border border-slate-300 dark:border-slate-600 rounded-lg font-mono resize-y"
+                        readonly placeholder="Base64 output..."></textarea>
+                </div>
+            </div>
+
+            <div class="lg:col-span-1 space-y-6">
+                <div class="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-xl border border-blue-100 dark:border-blue-800">
+                    <h3 class="font-bold text-blue-900 dark:text-blue-300 mb-2">What is Base64?</h3>
+                    <p class="text-sm text-blue-800 dark:text-blue-200">Base64 is a group of binary-to-text encoding
+                        schemes that represent binary data in an ASCII string format. It is commonly used to embed
+                        images directly into HTML or CSS.</p>
+                </div>
+            </div>
+        </div>
+
+        <article class="mt-16 prose dark:prose-invert max-w-none">
+            <h2>Free Base64 Encoder & Decoder</h2>
+            <p>Convert text and binary data into safe ASCII strings. Perfect for email attachments, data URIs, and API
+                headers.</p>
+        </article>
+
+        <!-- SEO Content -->
+        <section class="max-w-5xl mx-auto mt-16 mb-12">
+
+            <!-- Features Grid -->
+            <div class="grid md:grid-cols-3 gap-6 mb-12">
+                <div
+                    class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
+                    <div
+                        class="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-lg flex items-center justify-center mb-4 text-xl">
+                        <i class="fa-solid fa-file-shield"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900 dark:text-white">Safe Transfer</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Ensures binary data remains intact during transfer
+                        over protocols designed for text (like HTTP/SMTP).</p>
+                </div>
+                <div
+                    class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
+                    <div
+                        class="w-10 h-10 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-lg flex items-center justify-center mb-4 text-xl">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900 dark:text-white">Instant Decode</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Decode cryptic `SGVsbG8=` strings back into
+                        readable text in milliseconds.</p>
+                </div>
+                <div
+                    class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
+                    <div
+                        class="w-10 h-10 bg-sky-100 dark:bg-sky-900/30 text-sky-600 dark:text-sky-400 rounded-lg flex items-center justify-center mb-4 text-xl">
+                        <i class="fa-solid fa-image"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900 dark:text-white">Data URIs</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Embed small images directly into HTML/CSS to
+                        reduce HTTP requests and speed up page loads.</p>
+                </div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12 items-start">
+
+                <!-- Left Column: About & Technical Details -->
+                <div class="prose dark:prose-invert">
+                    <section class="mb-12">
+                        <h2
+                            class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-600 dark:from-white dark:to-slate-400 mb-6">
+                            How Base64 Works</h2>
+                        <p class="text-slate-600 dark:text-slate-400">
+                            Base64 encoding takes binary data and translates it into a simplified alphabet of 64
+                            characters
+                            (A-Z, a-z, 0-9, +, /).
+                        </p>
+                        <ul class="space-y-4 marker:text-blue-500">
+                            <li>
+                                <strong class="text-slate-900 dark:text-white">Binary to Text</strong>
+                                <p class="text-xs text-slate-500 m-0">It turns bytes that might break text systems (like
+                                    null bytes) into safe printable characters.</p>
+                            </li>
+                            <li>
+                                <strong class="text-slate-900 dark:text-white">Basic Authentication</strong>
+                                <p class="text-xs text-slate-500 m-0">Standard HTTP Authentication headers use Base64 to
+                                    encode `username:password`.</p>
+                            </li>
+                            <li>
+                                <strong class="text-slate-900 dark:text-white">MIME</strong>
+                                <p class="text-xs text-slate-500 m-0">Email attachments are encoded in Base64 so they
+                                    can
+                                    travel through text-only email servers.</p>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2
+                            class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 mb-6">
+                            Technical Details</h2>
+
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">The Algorithm</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm">
+                            Base64 encoding breaks binary data into 6-bit segments. Each 6-bit segment represents a
+                            value
+                            between 0 and 63, which maps directly to a character in the Base64 alphabet.
+                        </p>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm mt-2">
+                            For example, three 8-bit bytes (24 bits total) are converted into four 6-bit groups (24 bits
+                            total). This is why Base64 output is always longer than the input.
+                        </p>
+
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white mt-6 mb-2">Padding with "="</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm">
+                            Since the output must be a multiple of 4 characters, padding characters (`=`) are added to
+                            the
+                            end if the input length isn't divisible by 3.
+                        </p>
+                        <ul class="list-disc pl-5 text-sm text-slate-600 dark:text-slate-400 mt-2 space-y-1">
+                            <li>1 byte remaining &rarr; 2 padding characters (`==`)</li>
+                            <li>2 bytes remaining &rarr; 1 padding character (`=`)</li>
+                        </ul>
+
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white mt-6 mb-2">Data Overhead</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm">
+                            Base64 encoding increases data size by approximately <strong>33%</strong>. A 10MB file will
+                            become roughly 13.3MB when encoded. This is the trade-off for safe text transmission.
+                        </p>
+                    </section>
+                </div>
+
+                <!-- Styled How-To Guide -->
+                <div
+                    class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-8 border border-slate-100 dark:border-slate-800">
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
+                        <i class="fa-solid fa-list-check text-blue-500"></i> How to use
+                    </h3>
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-white dark:bg-slate-800 border-2 border-blue-500 text-blue-600 dark:text-blue-400 font-bold flex items-center justify-center text-sm shadow-sm">
+                                1</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-white text-sm">Paste Input</h4>
+                                <p class="text-sm text-slate-500 mt-1">Enter your plain text or Base64 string into the
+                                    input box.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 text-slate-500 font-bold flex items-center justify-center text-sm shadow-sm">
+                                2</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-white text-sm">Select Action</h4>
+                                <p class="text-sm text-slate-500 mt-1">Click "Encode" to convert text to Base64, or
+                                    "Decode" to convert back.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 text-slate-500 font-bold flex items-center justify-center text-sm shadow-sm">
+                                3</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-white text-sm">Copy Result</h4>
+                                <p class="text-sm text-slate-500 mt-1">Your result appears instantly. Click "Copy" to
+                                    save it.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <div id="app-footer"></div>
+
+    <script type="module" src="./js/app.js?v=4"></script>
+    <script type="module" src="./js/modules/encoding-tools.js"></script>
+</body>
+
+</html>
