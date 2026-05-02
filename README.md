@@ -61,6 +61,3 @@ Built with ❤️ for privacy and productivity.
 ## 📄 License
 
 This project is licensed under the **ISC License** - see the [LICENSE](LICENSE) file for details.
-# textutils
-# textutils
-# textutils
